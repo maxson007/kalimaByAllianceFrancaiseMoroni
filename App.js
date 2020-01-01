@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import ChoiceLanguageScreen from './screens/ChoiceLanguageScreen';
 import  ChooseDialectScreen from './screens/ChooseDialectScreen';
+
 export default function App() {
   return (
       <ChooseDialectScreen/>

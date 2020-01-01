@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     },
     imageFlag: {
         width: 100,
-        marginLeft:-8,
-        height: 69,
+        marginLeft: Platform.OS === 'ios' ? -8 : 5,
+        height: 70,
         //alignItems:'flex-start'
     },
     rectStack: {
