@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, SafeAreaView, Image,TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 import ButtonPrimary from '../components/ButtonPrimary';
 
 const HomeScreen = (props) => {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         color: '#da002e',
         textAlign: 'center',
         //fontFamily: 'Malayalam MN',
-        fontSize: 26,
+        fontSize: 30,
         fontWeight: '700',
     },
     kLimaView: {

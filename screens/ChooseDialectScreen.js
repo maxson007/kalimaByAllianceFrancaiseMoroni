@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     jeVeuxApprendre: {
         color: "#db002e",
         fontSize: 35,
+        fontWeight: '700'
     }
 });
 
