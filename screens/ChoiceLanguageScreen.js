@@ -11,8 +11,8 @@ function ChoiceLanguageScreen(props) {
                 </Text>
             </View>
             <View style={styles.buttonView}>
-                <ButtonWithFlag imageFlagUri={require('../assets/images/comoresFlag.png')} title="Le Comorien"/>
-                <ButtonWithFlag imageFlagUri={require('../assets/images/frenchFlag.png')} title="Le Francais"/>
+                <ButtonWithFlag imageFlagUri={require('../assets/images/flags/comoresFlag.png')} title="Le Comorien"/>
+                <ButtonWithFlag imageFlagUri={require('../assets/images/flags/frenchFlag.png')} title="Le Francais"/>
             </View>
             <View style={styles.imageLogoView}>
                 <Image source={require('../assets/logos/logoalliance.png')} />
