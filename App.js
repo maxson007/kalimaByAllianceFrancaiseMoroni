@@ -4,9 +4,10 @@ import HomeScreen from './screens/HomeScreen';
 import ChoiceLanguageScreen from './screens/ChoiceLanguageScreen';
 import  ChooseDialectScreen from './screens/ChooseDialectScreen';
 import WhyLearningScreen from './screens/WhyLearningScreen';
+import ChooseThemeScreen from './screens/ChooseThemeScreen';
 export default function App() {
   return (
-      <WhyLearningScreen/>
+      <ChooseThemeScreen/>
   );
 }
 

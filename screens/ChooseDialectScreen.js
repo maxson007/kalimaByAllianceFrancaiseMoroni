@@ -13,6 +13,7 @@ function ChooseDialectScreen(props) {
             <View style={styles.buttonView}>
                 <ButtonWithFlag imageFlagUri={require('../assets/images/flags/Flag_of_Anjouan.png')} title="Anjouanais"/>
                 <ButtonWithFlag imageFlagUri={require('../assets/images/flags/Flag_of_Mohéli.png')} title="Mohélien"/>
+                <ButtonWithFlag imageFlagUri={require('../assets/images/flags/Flag_of_Mayotte.png')} title="Mahorais"/>
                 <ButtonWithFlag imageFlagUri={require('../assets/images/flags/Flag_of_Grande_Comore.png')} titleStyle={{fontSize: 20,color: "#db002e"}} title="Grd-comorien"/>
             </View>
             <View style={styles.imageLogoView}>
