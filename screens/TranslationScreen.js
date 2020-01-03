@@ -32,8 +32,8 @@ export default class TranslationScreen extends React.Component {
                     <Picker
                         selectedValue={this.state.language}
                         mode='dropdown'
-                        style={{width: '80%', height:50,  marginTop: Platform.OS === 'ios' ?-5:0, marginBottom: Platform.OS === 'ios' ?20: 0 }}
-                        itemStyle={{color:'red', height:100 }}
+                        style={{width: '80%', height:50, color: "#da002e",  marginTop: Platform.OS === 'ios' ?-5:0, marginBottom: Platform.OS === 'ios' ?20: 0 }}
+                        itemStyle={{color:'#da002e', height:100 }}
                         onValueChange={(itemValue, itemIndex) =>
                             this.setState({language: itemValue})
                         }>
