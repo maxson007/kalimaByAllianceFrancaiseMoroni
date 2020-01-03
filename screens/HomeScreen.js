@@ -13,6 +13,8 @@ const HomeScreen = (props) => {
                 </Text>
             </View>
             <View style={styles.kLimaView}>
+                <Image style={{ width: 100 ,height:100, alignSelf: 'center'}} source={require('../assets/logos/languageLogo.png')}/>
+
                 <Text style={styles.kLima}>
                     k@lima
                 </Text>
@@ -32,9 +34,11 @@ const styles = StyleSheet.create({
         flex: 1
     },
     textViewApprendsGratuitement: {
-        top: 50,
+        marginTop: 50,
         flex: 1,
-        width: '100%',
+        width: '80%',
+        alignSelf: 'center',
+        justifyContent:'center'
     },
     apprendsGratuitement: {
         color: '#da002e',
@@ -44,7 +48,7 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     kLimaView: {
-        top:30,
+        marginTop:10,
         width: '100%',
         //height: 95,
         flex: 1
@@ -53,9 +57,9 @@ const styles = StyleSheet.create({
         color: '#da002e',
         textAlign: 'center',
         //fontFamily: 'Malayalam MN',
-        fontSize: 80,
-        fontWeight: '400',
-        lineHeight: 94,
+        fontSize: 29,
+        fontWeight: '700',
+
     },
     buttonView: {
         top: 50,
