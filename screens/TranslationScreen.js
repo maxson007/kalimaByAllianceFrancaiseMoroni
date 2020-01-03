@@ -49,7 +49,14 @@ export default class TranslationScreen extends React.Component {
                         </TextInput>
                     </View>
                 </View>
-
+                <View style={{alignItems:'center', margin: 20}}>
+                    <TouchableOpacity style={styles.buttonGrey}>
+                        <View style={{ flex:1, flexDirection: 'row', alignItems: 'center'}}>
+                            <Text style={styles.buttonText}> Ecouter </Text>
+                            <Image style={{marginLeft:10}} source={require('../assets/images/screens/translate/audio-speaker-on.png')}/>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </SafeAreaView>
         );
     };
@@ -69,6 +76,15 @@ const styles = StyleSheet.create({
         height: 46,
         borderRadius: 15,
         backgroundColor: '#da002e',
+    },
+    buttonGrey: {
+        margin:5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 281,
+        height: 46,
+        borderRadius: 15,
+        backgroundColor: '#8C8D8F',
     },
     buttonText: {
         color: "#FFFFFF",
