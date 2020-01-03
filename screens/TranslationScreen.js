@@ -28,6 +28,21 @@ export default class TranslationScreen extends React.Component {
                         </TextInput>
                     </View>
                 </View>
+                <View style={{width:'100%',  alignItems:'center', marginBottom:10}}>
+                    <Picker
+                        selectedValue={this.state.language}
+                        mode='dropdown'
+                        style={{width: '80%', height:50,  marginTop: Platform.OS === 'ios' ?-5:0, marginBottom: Platform.OS === 'ios' ?20: 0 }}
+                        itemStyle={{color:'red', height:100 }}
+                        onValueChange={(itemValue, itemIndex) =>
+                            this.setState({language: itemValue})
+                        }>
+                        <Picker.Item label="Anjouanais" value="anjouanais" />
+                        <Picker.Item label="Grand-Comorien" value="grand-comorien" />
+                        <Picker.Item label="Mahorais" value="mahorais" />
+                        <Picker.Item label="Mohélien" value="mohelien" />
+                    </Picker>
+                </View>
                 <View style={{alignItems:'center', margin: 20}}>
                     <TouchableOpacity style={styles.button}>
                         <View style={{ flex:1, flexDirection: 'row', alignItems: 'center'}}>
@@ -38,7 +53,7 @@ export default class TranslationScreen extends React.Component {
                 </View>
                 <View style={{width: '100%' }}>
                     <Text style={{color: '#8C8D8F', fontSize: 20, fontWeight: '700', marginLeft: 41}}>
-                        Français
+                        Anjouanais
                     </Text>
                     <View style={styles.textInputView}>
                         <TextInput
