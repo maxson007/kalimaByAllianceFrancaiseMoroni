@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         color: '#da002e',
         textAlign: 'center',
         //fontFamily: 'Malayalam MN',
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: '700',
     },
     kLimaView: {

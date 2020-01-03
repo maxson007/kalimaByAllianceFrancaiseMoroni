@@ -12,21 +12,20 @@ export default function ButtonPrimary(props){
 const styles = StyleSheet.create({
     button: {
         width: '80%',
-        height: 70,
+        height: 60,
         margin:5,
         borderRadius: 35,
         borderColor: '#ffff',
         borderWidth: 0,
         backgroundColor: '#da002e',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     title: {
         color: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
         // fontFamily: 'Malayalam MN',
-        fontSize: 30,
+        fontSize: 20,
         textAlign: 'center',
-        fontWeight: '400',
-        lineHeight: 60,
+        fontWeight: '700',
     },
 });
