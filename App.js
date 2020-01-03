@@ -5,9 +5,11 @@ import ChoiceLanguageScreen from './screens/ChoiceLanguageScreen';
 import  ChooseDialectScreen from './screens/ChooseDialectScreen';
 import WhyLearningScreen from './screens/WhyLearningScreen';
 import ChooseThemeScreen from './screens/ChooseThemeScreen';
+import TranslationScreen from './screens/TranslationScreen';
+
 export default function App() {
   return (
-      <ChooseThemeScreen/>
+      <TranslationScreen/>
   );
 }
 
