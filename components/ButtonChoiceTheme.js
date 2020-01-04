@@ -4,7 +4,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 export default function ButtonChoiceTheme(props){
 
     return(
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={ props.onPress} style={styles.button}>
             <View style={{flex:1, flexDirection:'row', justifyContent: 'center',  alignItems: 'center',}}>
             <Image
                 source={props.imageIcon}

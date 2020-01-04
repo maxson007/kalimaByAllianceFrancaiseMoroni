@@ -42,7 +42,7 @@ export default  function WhyLearningScreen(props){
                    numColumns={2}
                    keyExtractor={(item, index) => index.toString()}
                    renderItem={({ item }) => (
-                       <TouchableOpacity style={{ flex: 1, flexDirection: 'column', margin: 15,alignItems: 'center'}}>
+                       <TouchableOpacity onPress={ ()=>props.navigation.navigate('AppTabNavigator')} style={{ flex: 1, flexDirection: 'column', margin: 15,alignItems: 'center'}}>
                            <Image style={styles.imageItem} source={ item.icon } />
                            <Text style={styles.gridText}> {item.text} </Text>
                        </TouchableOpacity>

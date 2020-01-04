@@ -11,8 +11,14 @@ function ChoiceLanguageScreen(props) {
                 </Text>
             </View>
             <View style={styles.buttonView}>
-                <ButtonWithFlag imageFlagUri={require('../assets/images/flags/comoresFlag.png')} titleStyle={{fontSize: 20,color: "#db002e"}} title="Le Comorien"/>
-                <ButtonWithFlag imageFlagUri={require('../assets/images/flags/frenchFlag.png')} titleStyle={{fontSize: 20,color: "#db002e"}} title="Le Francais"/>
+                <ButtonWithFlag
+                    onPress={ ()=>props.navigation.navigate('ChooseDialect')}
+                    imageFlagUri={require('../assets/images/flags/comoresFlag.png')}
+                    titleStyle={{fontSize: 20,color: "#db002e"}} title="Le Comorien"/>
+                <ButtonWithFlag
+                    onPress={ ()=>props.navigation.navigate('WhyLearning')}
+                    imageFlagUri={require('../assets/images/flags/frenchFlag.png')}
+                    titleStyle={{fontSize: 20,color: "#db002e"}} title="Le Francais"/>
             </View>
             <View style={styles.imageLogoView}>
                 <Image source={require('../assets/logos/logoalliance.png')} />

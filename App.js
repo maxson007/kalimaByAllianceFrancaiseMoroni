@@ -4,13 +4,14 @@ import HomeScreen from './screens/HomeScreen';
 import ChoiceLanguageScreen from './screens/ChoiceLanguageScreen';
 import  ChooseDialectScreen from './screens/ChooseDialectScreen';
 import WhyLearningScreen from './screens/WhyLearningScreen';
-import ChooseThemeScreen from './screens/ChooseThemeScreen';
+import ChooseActivityThemeScreen from './screens/ChooseActivityThemeScreen';
 import TranslationScreen from './screens/TranslationScreen';
 import ProfileScreen from './screens/profile/ProfileScreen';
 
 import { AppLoading, SplashScreen } from 'expo';
 import { Asset } from 'expo-asset';
 import KalimaSplashScreen from './screens/KalimaSplashScreen';
+import AppNavigator from "./ navigation/AppNavigator";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ export default class App extends React.Component {
             )
         }
         return (
-            <HomeScreen/>
+            <AppNavigator/>
         );
     }
 

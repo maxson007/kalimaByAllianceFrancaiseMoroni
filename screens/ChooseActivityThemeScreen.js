@@ -31,14 +31,23 @@ const data=[
         text: 'Parler de ses loisirs'
     }
 ];
-export default function ChooseThemeScreen(props){
-    return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.choisiThematiqueTextView}>
-                <Text style={styles.choisiThematiqueText}>
-                    Je choisis un une thématique
-                </Text>
-            </View>
+export default class ChooseActivityThemeScreen extends  React.Component{
+    constructor(props) {
+        super(props);
+    }
+
+    static navigationOptions = {
+        title: 'Activité'
+    };
+    render(){
+
+        return (
+            <SafeAreaView style={styles.container}>
+                <View style={styles.choisiThematiqueTextView}>
+                    <Text style={styles.choisiThematiqueText}>
+                        Je choisis un une thématique
+                    </Text>
+                </View>
 
                 <FlatList
                     style
@@ -46,13 +55,15 @@ export default function ChooseThemeScreen(props){
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => (
                         <View style={styles.buttonView}>
-                        <ButtonChoiceTheme imageIcon={item.icon} title={item.text} />
+                            <ButtonChoiceTheme onPress={ ()=>this.props.navigation.navigate('AppTabNavigator')} imageIcon={item.icon} title={item.text} />
                         </View>
                     )}
                 />
-        </SafeAreaView>
-    );
+            </SafeAreaView>
+        );
+    }
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1
@@ -65,11 +76,13 @@ const styles = StyleSheet.create({
     choisiThematiqueTextView: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: '80%',
+        alignSelf: 'center'
     },
     choisiThematiqueText: {
         color: "#db002e",
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: '700',
         textAlign: 'center'
     }

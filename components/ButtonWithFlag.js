@@ -3,7 +3,10 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export default function ButtonWithFlag(props) {
     return (
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+            onPress={props.onPress}
+            style={styles.button}
+        >
             <View style={{flex:1,flexDirection:'row'}}>
                 <View style={styles.imageFlagView}>
                     <Image

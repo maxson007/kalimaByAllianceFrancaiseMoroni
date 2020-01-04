@@ -8,7 +8,9 @@ export default class TranslationScreen extends React.Component {
             sourceLanguage: null
         }
     }
-
+    static navigationOptions = {
+        title: 'Traduction'
+    };
     render() {
 
 

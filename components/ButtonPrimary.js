@@ -4,7 +4,10 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 export default function ButtonPrimary(props){
 
     return(
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+            onPress={props.onPress}
+            style={styles.button}>
+
             <Text style={styles.title}> { props.title} </Text>
         </TouchableOpacity>
     )

@@ -1,9 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 import ButtonPrimary from '../components/ButtonPrimary';
-
+import SplashAnimation from '../animations/SplashAnimation';
 const HomeScreen = (props) => {
-
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.textViewApprendsGratuitement}>
@@ -14,13 +13,12 @@ const HomeScreen = (props) => {
             </View>
             <View style={styles.kLimaView}>
                 <Image style={{ width: 100 ,height:100, alignSelf: 'center'}} source={require('../assets/logos/languageLogo.png')}/>
-
                 <Text style={styles.kLima}>
                     k@lima
                 </Text>
             </View>
             <View style={styles.buttonView}>
-                <ButtonPrimary style={styles.button} title="Commencer"/>
+                <ButtonPrimary onPress={ ()=>props.navigation.navigate('ChoiceLanguage')} style={styles.button} title="Commencer"/>
                 <ButtonPrimary style={styles.button} title="J’ai déjà un compte"/>
             </View>
             <View style={styles.imageLogoView}>
