@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: "#da002e",
         height: 200,
+        //borderBottomColor: "#8C8D8F",
+       // borderBottomWidth:4
     },
     avatar: {
         width: 130,
