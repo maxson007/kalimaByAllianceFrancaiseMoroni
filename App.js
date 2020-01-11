@@ -12,6 +12,7 @@ import { AppLoading, SplashScreen } from 'expo';
 import { Asset } from 'expo-asset';
 import KalimaSplashScreen from './screens/KalimaSplashScreen';
 import AppNavigator from "./ navigation/AppNavigator";
+import ChooseActivityScreen from "./screens/activity/ChooseActivityScreen";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -39,7 +40,7 @@ export default class App extends React.Component {
             )
         }
         return (
-            <AppNavigator/>
+            <ChooseActivityScreen/>
         );
     }
 
