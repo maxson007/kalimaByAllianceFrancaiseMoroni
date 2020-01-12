@@ -1,61 +1,79 @@
 import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image,FlatList,TouchableOpacity} from 'react-native';
 
+class WhyLearningScreen extends React.Component{
 
-export default  function WhyLearningScreen(props){
+    constructor(props) {
+        super(props);
 
-    const data=[
-        {
-            icon: require("../assets/images/screens/sac.png"),
-            text: 'Ecole'
-        },
-        {
-            icon: require("../assets/images/screens/travel.png"),
-            text: 'Voyages'
-        },
-        {
-            icon: require("../assets/images/screens/family.png"),
-            text: 'Famille et amis'
-        },
-        {
-            icon: require("../assets/images/screens/museum.png"),
-            text: 'Culture'
-        },
-        {
-            icon: require("../assets/images/screens/salary.png"),
-            text: 'Opportunités'
-        },
-        {
-            icon: require("../assets/images/screens/chemistry.png"),
-            text: 'Autres'
-        }
-    ];
+    }
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.textViewPourquoiApprends}>
-                <Text style={styles.pourquoiApprends}>Pourquoi apprends-tu une langue ?</Text>
-            </View>
-            <View style={styles.gridContainer}>
-               <FlatList
-                   data={data}
-                   numColumns={2}
-                   keyExtractor={(item, index) => index.toString()}
-                   renderItem={({ item }) => (
-                       <TouchableOpacity onPress={ ()=>props.navigation.navigate('AppTabNavigator')} style={{ flex: 1, flexDirection: 'column', margin: 15,alignItems: 'center'}}>
-                           <Image style={styles.imageItem} source={ item.icon } />
-                           <Text style={styles.gridText}> {item.text} </Text>
-                       </TouchableOpacity>
-                   )}
-               />
-            </View>
-            <View style={styles.imageLogoView}>
-                <Image source={require('../assets/logos/logoalliance.png')} />
-            </View>
-        </SafeAreaView>
-    )
+
+    static navigationOptions = {
+         header: null,
+        mode: 'modal',
+        headerMode: 'none',
+    };
+
+    render() {
+
+        const data = [
+            {
+                icon: require("../assets/images/screens/sac.png"),
+                text: 'Ecole'
+            },
+            {
+                icon: require("../assets/images/screens/travel.png"),
+                text: 'Voyages'
+            },
+            {
+                icon: require("../assets/images/screens/family.png"),
+                text: 'Famille et amis'
+            },
+            {
+                icon: require("../assets/images/screens/museum.png"),
+                text: 'Culture'
+            },
+            {
+                icon: require("../assets/images/screens/salary.png"),
+                text: 'Opportunités'
+            },
+            {
+                icon: require("../assets/images/screens/chemistry.png"),
+                text: 'Autres'
+            }
+        ];
+
+        return (
+            <SafeAreaView style={styles.container}>
+                <View style={styles.textViewPourquoiApprends}>
+                    <Text style={styles.pourquoiApprends}>Pourquoi apprends-tu une langue ?</Text>
+                </View>
+                <View style={styles.gridContainer}>
+                    <FlatList
+                        data={data}
+                        numColumns={2}
+                        keyExtractor={(item, index) => index.toString()}
+                        renderItem={({item}) => (
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('AppTabNavigator')} style={{
+                                flex: 1,
+                                flexDirection: 'column',
+                                margin: 15,
+                                alignItems: 'center'
+                            }}>
+                                <Image style={styles.imageItem} source={item.icon}/>
+                                <Text style={styles.gridText}> {item.text} </Text>
+                            </TouchableOpacity>
+                        )}
+                    />
+                </View>
+                <View style={styles.imageLogoView}>
+                    <Image source={require('../assets/logos/logoalliance.png')}/>
+                </View>
+            </SafeAreaView>
+        )
+    }
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1
@@ -94,3 +112,4 @@ const styles = StyleSheet.create({
         paddingTop: 40,
     },
 });
+ export default WhyLearningScreen;

@@ -6,10 +6,34 @@ import TranslationScreen from "../screens/TranslationScreen";
 import ProfileScreen from "../screens/profile/ProfileScreen";
 import {Ionicons, MaterialCommunityIcons,FontAwesome } from '@expo/vector-icons';
 import UserManualScreen from "../screens/UserManualScreen";
+import {createStackNavigator} from "react-navigation-stack";
+import ChooseActivityScreen from "../screens/activity/ChooseActivityScreen";
+
+const ChooseActivityStackNavigator = createStackNavigator({
+    ChooseActivityTheme: {
+        screen: ChooseActivityThemeScreen,
+        navigationOptions: {
+            title: 'Thèmes',
+        }
+    },
+    ChooseActivity: {
+        screen: ChooseActivityScreen,
+        navigationOptions: {
+            title: 'Activités',
+        }
+    },
+
+});
 
 const TabNavigator = createBottomTabNavigator(
+
     {
-        ChooseActivityTheme: ChooseActivityThemeScreen,
+        ChooseActivity: {
+            screen: ChooseActivityStackNavigator,
+            navigationOptions: {
+                title: 'Activité'
+            }
+        },
         Translation: TranslationScreen,
         Profile: ProfileScreen,
         UserManual: UserManualScreen
@@ -20,7 +44,7 @@ const TabNavigator = createBottomTabNavigator(
                 const {routeName} = navigation.state;
                 let IconComponent = Ionicons;
                 let iconName;
-                if (routeName === 'ChooseActivityTheme') {
+                if (routeName === 'ChooseActivity') {
                     iconName = 'ios-school';
                 } else if (routeName === 'Translation') {
                     iconName = 'translate';

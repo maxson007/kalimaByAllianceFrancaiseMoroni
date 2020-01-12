@@ -37,7 +37,8 @@ export default class ChooseActivityThemeScreen extends  React.Component{
     }
 
     static navigationOptions = {
-        title: 'Activité'
+        title: 'Activité',
+        header: null,
     };
     render(){
 
@@ -55,7 +56,7 @@ export default class ChooseActivityThemeScreen extends  React.Component{
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => (
                         <View style={styles.buttonView}>
-                            <ButtonChoiceTheme onPress={ ()=>this.props.navigation.navigate('AppTabNavigator')} imageIcon={item.icon} title={item.text} />
+                            <ButtonChoiceTheme onPress={ ()=>this.props.navigation.navigate('ChooseActivity')} imageIcon={item.icon} title={item.text} />
                         </View>
                     )}
                 />

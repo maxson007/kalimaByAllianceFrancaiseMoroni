@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/screens/activity/ChooseActivityScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/screens/activity/Adoption.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/screens/activity/about-finding-the-right-words-1241357-638x425.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/screens/activity/african-990326_640.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/screens/activity/cat-4748329_640.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/screens/activity/digits-4014181_640.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/screens/activity/learning-your-abc-s-1257379-640x480.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/screens/activity/pencil-crayons-1178979-638x468.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/CardActivity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ navigation/TabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/ navigation/TabNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ChoiceLanguageScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChoiceLanguageScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ChooseActivityThemeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChooseActivityThemeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ChooseDialectScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChooseDialectScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/WhyLearningScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/WhyLearningScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/activity/ChooseActivityScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ChooseActivityScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,21 +58,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images/screens/activity" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
+      <recent name="$PROJECT_DIR$/screens" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images/screens/activity" />
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/assets/logos" />
       <recent name="$PROJECT_DIR$/assets/images/screens/translate" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/screens" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -96,7 +109,7 @@
       <workItem from="1578424699000" duration="2000" />
       <workItem from="1578597565873" duration="429000" />
       <workItem from="1578642409104" duration="185000" />
-      <workItem from="1578673841600" duration="6195000" />
+      <workItem from="1578673841600" duration="16589000" />
     </task>
     <servers />
   </component>
@@ -112,9 +125,14 @@
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="270" y="48" key="SettingsEditor/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1578091980678" />
-    <state x="-1126" y="28" width="789" height="936" key="find.popup" timestamp="1578165024889">
-      <screen x="-1920" y="23" width="1920" height="1057" />
+    <state width="625" height="500" key="SwitcherDM" timestamp="1578776329783">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state width="625" height="500" key="SwitcherDM/0.23.1680.947@0.23.1680.947" timestamp="1578776329783" />
+    <state x="695" y="27" width="789" height="839" key="find.popup" timestamp="1578782293970">
+      <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="-1126" y="28" width="789" height="936" key="find.popup/-1920.23.1920.1057/0.23.1680.947@-1920.23.1920.1057" timestamp="1578165024889" />
+    <state x="695" y="27" width="789" height="839" key="find.popup/0.23.1680.947@0.23.1680.947" timestamp="1578782293970" />
   </component>
 </project>
