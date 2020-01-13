@@ -1,11 +1,22 @@
 import React, {Fragment} from 'react'
-import {SafeAreaView, StyleSheet, View, Text, Platform, Image, ActivityIndicator,TouchableOpacity, FlatList} from "react-native";
+import {
+    SafeAreaView,
+    StyleSheet,
+    View,
+    Text,
+    Platform,
+    Image,
+    ActivityIndicator,
+    TouchableOpacity,
+    FlatList
+} from "react-native";
 import {Avatar, Card, Title, Paragraph, ProgressBar, Colors} from 'react-native-paper';
 import {Ionicons, MaterialCommunityIcons, FontAwesome, MaterialIcons} from '@expo/vector-icons';
 import CheckButton from "../../components/CheckButton";
 import ResponseButton from "../../components/ResponseButton";
 import FinishButton from "../../components/FinishButton";
 import Alert from "../../components/Alert";
+
 const ExoData = [
     {
         identifier: 1,
@@ -45,28 +56,28 @@ class ExerciseScreen extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state={
-            currentExercise:null,
+        this.state = {
+            currentExercise: null,
             exerciseType: null,
             progressBarValue: 0,
-            currentIndex:0,
-            numberExercise:0,
+            currentIndex: 0,
+            numberExercise: 0,
             isLoading: false,
             disabledCheckButton: true,
             isSuccessCurrentExercise: null,
-            currentExerciseIsFinish:false
+            currentExerciseIsFinish: false
         }
     }
 
     componentDidMount() {
-        this.setState({ isLoading: true });
-        let currentExercise= ExoData[this.state.currentIndex];
+        this.setState({isLoading: true});
+        let currentExercise = ExoData[this.state.currentIndex];
         //console.log(currentExercise);
-        let exerciseType=currentExercise.typeExercice;
-        let numberExercise= ExoData.length;
-        let progressBarValue=(this.state.currentIndex+1)/numberExercise;
+        let exerciseType = currentExercise.typeExercice;
+        let numberExercise = ExoData.length;
+        let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
         //console.log(currentExercise.listeProposition);
-      //  console.log(this.state);
+        //  console.log(this.state);
         this.setState({
             currentExercise,
             numberExercise,
@@ -74,8 +85,9 @@ class ExerciseScreen extends React.Component {
             exerciseType,
             isLoading: false
         });
-       // this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this)
+        // this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this)
     }
+
     _displayLoading() {
         if (this.state.isLoading) {
             return (
@@ -86,32 +98,37 @@ class ExerciseScreen extends React.Component {
         }
     }
 
-    _handlePressResponse(item){
+    _handlePressResponse(item) {
 
         //console.log(item)
-        let listeProposition=[item];
+        let listeProposition = [item];
         let currentExercise = this.state.currentExercise;
-        currentExercise.listeProposition=listeProposition;
+        currentExercise.listeProposition = listeProposition;
         this.setState({
             currentExercise,
             disabledCheckButton: false
         });
     }
-    _renderResponseProposition(){
-        if(this.state.currentExercise!=null)
-        return (
-            <FlatList
-                data={this.state.currentExercise.listeProposition}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({item}) => (
-                    <ResponseButton isSuccess={!this.state.disabledCheckButton} title={item} onPress={()=>this._handlePressResponse(item)} disabled={!this.state.disabledCheckButton}/>
-                )}
-            />
-        )
+
+    _renderResponseProposition() {
+        if (this.state.currentExercise == null) return null;
+        if (this.state.exerciseType == "chooseExactTranslation")
+            return (
+                <FlatList
+                    data={this.state.currentExercise.listeProposition}
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={({item}) => (
+                        <ResponseButton isSuccess={!this.state.disabledCheckButton} title={item}
+                                        onPress={() => this._handlePressResponse(item)}
+                                        disabled={!this.state.disabledCheckButton}/>
+                    )}
+                />
+            )
     }
-    _renderEnonceExercice(){
-        if(this.state.currentExercise!=null)
-            return(
+
+    _renderEnonceExercice() {
+        if (this.state.currentExercise != null)
+            return (
                 <Fragment>
                     <Text style={styles.textInstructionExercice}>{this.state.currentExercise.enonceExercice}</Text>
                     <Text style={styles.textAtraduire}>
@@ -121,48 +138,51 @@ class ExerciseScreen extends React.Component {
             )
     }
 
-    _handleOnPressCheckButton(){
+    _handleOnPressCheckButton() {
         let currentExercise = this.state.currentExercise;
-        let chooseResponse=currentExercise.listeProposition[0];
+        let chooseResponse = currentExercise.listeProposition[0];
         this.setState({
-            isSuccessCurrentExercise:(chooseResponse==currentExercise.reponseExercice),
+            isSuccessCurrentExercise: (chooseResponse == currentExercise.reponseExercice),
             currentExerciseIsFinish: true
         });
     }
 
-    _renderCheckOrFinishButton(){
-        if(!this.state.currentExerciseIsFinish)
+    _renderCheckOrFinishButton() {
+        if (!this.state.currentExerciseIsFinish)
             return (
-                <CheckButton onPress={()=>this._handleOnPressCheckButton()} disabled={this.state.disabledCheckButton}/>
+                <CheckButton onPress={() => this._handleOnPressCheckButton()}
+                             disabled={this.state.disabledCheckButton}/>
             );
         //Button Terminer
-        return(
+        return (
             <Fragment>
-                <Alert title={this.state.isSuccessCurrentExercise?"Bonne réponse": "Mauvaise réponse"}
-                       type={this.state.isSuccessCurrentExercise? "success" : "danger"}/>
-                <FinishButton onPress={()=> this._handleOnPressFinishButton()} isSuccess={this.state.isSuccessCurrentExercise}/>
+                <Alert title={this.state.isSuccessCurrentExercise ? "Bonne réponse" : "Mauvaise réponse"}
+                       type={this.state.isSuccessCurrentExercise ? "success" : "danger"}/>
+                <FinishButton onPress={() => this._handleOnPressFinishButton()}
+                              isSuccess={this.state.isSuccessCurrentExercise}/>
             </Fragment>
 
         );
     }
-    _handleOnPressFinishButton(){
-        this.setState({ isLoading: true });
-        let currentExercise= ExoData[this.state.currentIndex+1];
+
+    _handleOnPressFinishButton() {
+        this.setState({isLoading: true});
+        let currentExercise = ExoData[this.state.currentIndex + 1];
         //console.log(currentExercise);
-        let exerciseType=currentExercise.typeExercice;
-        let numberExercise= ExoData.length;
-        let progressBarValue=(this.state.currentIndex+1)/numberExercise;
+        let exerciseType = currentExercise.typeExercice;
+        let numberExercise = ExoData.length;
+        let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
         this.setState(
             {
                 currentExercise,
                 exerciseType,
                 progressBarValue,
-                currentIndex: this.state.currentIndex+1,
+                currentIndex: this.state.currentIndex + 1,
                 numberExercise,
                 isLoading: false,
                 disabledCheckButton: true,
                 isSuccessCurrentExercise: false,
-                currentExerciseIsFinish:false
+                currentExerciseIsFinish: false
             }
         )
     }
@@ -170,14 +190,15 @@ class ExerciseScreen extends React.Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-                <View style={{ width:'95%', alignSelf: 'center', flexDirection: 'row'}}>
+                <View style={{width: '95%', alignSelf: 'center', flexDirection: 'row'}}>
                     <View style={{width: '10%', alignSelf: 'center'}}>
-                        <TouchableOpacity onPress={()=>alert("close")}>
+                        <TouchableOpacity onPress={() => alert("close")}>
                             <MaterialIcons name="close" size={40} color="red"/>
                         </TouchableOpacity>
                     </View>
-                    <View style={{width:'85%', alignSelf: 'center',marginLeft:10}}>
-                        <ProgressBar progress={this.state.progressBarValue} color="#da002e" style={{backgroundColor: '#8c8d8f', height: 20, borderRadius: 20}}/>
+                    <View style={{width: '85%', alignSelf: 'center', marginLeft: 10}}>
+                        <ProgressBar progress={this.state.progressBarValue} color="#da002e"
+                                     style={{backgroundColor: '#8c8d8f', height: 20, borderRadius: 20}}/>
                     </View>
                 </View>
                 <View style={styles.viewInstructionExercice}>
@@ -212,7 +233,7 @@ const styles = StyleSheet.create({
     viewInstructionExercice: {
         width: '80%',
         alignSelf: 'center',
-        marginTop:50
+        marginTop: 50
     },
     textInstructionExercice: {
         color: '#da002e',
