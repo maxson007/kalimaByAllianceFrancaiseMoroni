@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/components/Alert.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/CheckButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/FinishButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ResponseButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" afterDir="false" />
     </list>
@@ -96,7 +100,7 @@
       <workItem from="1578642409104" duration="185000" />
       <workItem from="1578673841600" duration="23219000" />
       <workItem from="1578848107491" duration="10328000" />
-      <workItem from="1578907352127" duration="1560000" />
+      <workItem from="1578907352127" duration="21633000" />
     </task>
     <servers />
   </component>
@@ -104,10 +108,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1267" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578908737656">
+    <state x="-1267" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578924478309">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state x="-1267" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.23.1920.1057/0.23.1680.947@-1920.23.1920.1057" timestamp="1578908737656" />
+    <state x="-1267" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.23.1920.1057/0.23.1680.947@-1920.23.1920.1057" timestamp="1578924478309" />
     <state x="270" y="48" key="SettingsEditor" timestamp="1578091980678">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
