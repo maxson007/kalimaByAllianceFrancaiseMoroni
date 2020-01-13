@@ -9,7 +9,7 @@ import Alert from "../../components/Alert";
 const ExoData = [
     {
         identifier: 1,
-        typeExercice: 'traduction-exacte',
+        typeExercice: 'chooseExactTranslation',
         enonceExercice: 'Choisis la traduction exacte',
         phraseTraduire: 'Je suis une fille',
         listeProposition: ['Wami mtru mama', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
@@ -17,7 +17,7 @@ const ExoData = [
     },
     {
         identifier: 2,
-        typeExercice: 'traduction-exacte',
+        typeExercice: 'chooseExactTranslation',
         enonceExercice: 'Choisis la traduction exacte',
         phraseTraduire: 'Je suis un garcon',
         listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
@@ -25,7 +25,7 @@ const ExoData = [
     },
     {
         identifier: 3,
-        typeExercice: 'traduction',
+        typeExercice: 'translatesSentence',
         enonceExercice: 'Traduis cette phrase. ',
         phraseTraduire: 'Je suis un garcon',
         listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
