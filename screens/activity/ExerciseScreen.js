@@ -46,13 +46,13 @@ class ExerciseScreen extends React.Component {
         ];
         return (
             <SafeAreaView style={styles.container}>
-                <View style={{flex:1, flexDirection:'row', width:'95%'}}>
-                    <View style={{flex: 1}}>
+                <View style={{ width:'95%', alignSelf: 'center', flexDirection: 'row'}}>
+                    <View style={{width: '10%', alignSelf: 'center'}}>
                         <TouchableOpacity onPress={()=>alert("close")}>
-                            <MaterialIcons name="close" size={32} color="red"/>
+                            <MaterialIcons name="close" size={40} color="red"/>
                         </TouchableOpacity>
                     </View>
-                    <View style={{flex:6}}>
+                    <View style={{width:'85%', alignSelf: 'center',marginLeft:10}}>
                         <ProgressBar progress={0.5} color="#da002e" style={{backgroundColor: '#8c8d8f', height: 20, borderRadius: 20}}/>
                     </View>
                 </View>
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     viewInstructionExercice: {
         width: '80%',
         alignSelf: 'center',
-        marginTop:20
+        marginTop:50
     },
     textInstructionExercice: {
         color: '#da002e',
