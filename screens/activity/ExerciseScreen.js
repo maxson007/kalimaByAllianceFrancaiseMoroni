@@ -135,16 +135,38 @@ class ExerciseScreen extends React.Component {
             return (
                 <CheckButton onPress={()=>this._handleOnPressCheckButton()} disabled={this.state.disabledCheckButton}/>
             );
-
+        //Button Terminer
         return(
             <Fragment>
                 <Alert title={this.state.isSuccessCurrentExercise?"Bonne réponse": "Mauvaise réponse"}
                        type={this.state.isSuccessCurrentExercise? "success" : "danger"}/>
-                <FinishButton onPress={()=>alert("finish ")} isSuccess={this.state.isSuccessCurrentExercise}/>
+                <FinishButton onPress={()=> this._handleOnPressFinishButton()} isSuccess={this.state.isSuccessCurrentExercise}/>
             </Fragment>
 
         );
     }
+    _handleOnPressFinishButton(){
+        this.setState({ isLoading: true });
+        let currentExercise= ExoData[this.state.currentIndex+1];
+        //console.log(currentExercise);
+        let exerciseType=currentExercise.typeExercice;
+        let numberExercise= ExoData.length;
+        let progressBarValue=(this.state.currentIndex+1)/numberExercise;
+        this.setState(
+            {
+                currentExercise,
+                exerciseType,
+                progressBarValue,
+                currentIndex: this.state.currentIndex+1,
+                numberExercise,
+                isLoading: false,
+                disabledCheckButton: true,
+                isSuccessCurrentExercise: false,
+                currentExerciseIsFinish:false
+            }
+        )
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.container}>
@@ -172,8 +194,6 @@ class ExerciseScreen extends React.Component {
                     justifyContent: 'center',
                     bottom: Platform.OS === 'ios' ? 60 : 30,
                 }}>
-
-
                     {this._renderCheckOrFinishButton()}
                 </View>
                 {this._displayLoading()}

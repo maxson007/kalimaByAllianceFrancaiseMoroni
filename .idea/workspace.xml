@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Alert.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/CheckButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/FinishButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ResponseButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" afterDir="false" />
     </list>
@@ -100,7 +96,7 @@
       <workItem from="1578642409104" duration="185000" />
       <workItem from="1578673841600" duration="23219000" />
       <workItem from="1578848107491" duration="10328000" />
-      <workItem from="1578907352127" duration="21633000" />
+      <workItem from="1578907352127" duration="22278000" />
     </task>
     <servers />
   </component>
