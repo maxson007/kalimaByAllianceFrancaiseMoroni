@@ -145,10 +145,8 @@ class ExerciseScreen extends React.Component {
 
 
     _handleOnPressCheckButton() {
-        let currentExercise = this.state.currentExercise;
-        let chooseResponse = currentExercise.listeProposition[0];
         this.setState({
-            isSuccessCurrentExercise: (chooseResponse == currentExercise.reponseExercice),
+            isSuccessCurrentExercise: (this.state.userResponse === this.state.currentExercise.reponseExercice),
             currentExerciseIsFinish: true
         });
     }
