@@ -16,16 +16,11 @@ import ResponseButton from "../../components/ResponseButton";
 import FinishButton from "../../components/FinishButton";
 import Alert from "../../components/Alert";
 import WordToSelect from "../../components/WordToSelect";
+import ChooseExactTranslationExercise from "../../components/ChooseExactTranslationExercise";
+import TranslateSentenceExercise from "../../components/TranslateSentenceExercice";
 
 const ExoData = [
-    {
-        identifier: 3,
-        typeExercice: 'translatesSentence',
-        enonceExercice: 'Traduis cette phrase. ',
-        phraseTraduire: 'Je suis un garcon',
-        listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-        reponseExercice: 'Wami mtru baba'
-    },
+
     {
         identifier: 1,
         typeExercice: 'chooseExactTranslation',
@@ -42,7 +37,14 @@ const ExoData = [
         listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
         reponseExercice: 'Wami mtru baba'
     },
-
+    {
+        identifier: 3,
+        typeExercice: 'translatesSentence',
+        enonceExercice: 'Traduis cette phrase. ',
+        phraseTraduire: 'Je suis un garcon',
+        listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+        reponseExercice: 'Wami mtru baba'
+    },
     {
         identifier: 4,
         typeExercice: 'traduction-paires',
@@ -66,8 +68,12 @@ class ExerciseScreen extends React.Component {
             isLoading: false,
             disabledCheckButton: true,
             isSuccessCurrentExercise: null,
-            currentExerciseIsFinish: false
-        }
+            currentExerciseIsFinish: false,
+            isUserSelectedResponse: false,
+            userResponse: null
+        };
+        this._handlePressResponse=this._handlePressResponse.bind(this);
+        this._handleOnPressCheckButton=this._handleOnPressCheckButton.bind(this);
     }
 
     componentDidMount() {
@@ -107,50 +113,36 @@ class ExerciseScreen extends React.Component {
         currentExercise.listeProposition = listeProposition;
         this.setState({
             currentExercise,
-            disabledCheckButton: false
+            userResponse: item,
+            disabledCheckButton: false,
+            isUserSelectedResponse: true
         });
     }
 
-    _renderResponseProposition() {
+    _renderExercise() {
         if (this.state.currentExercise == null) return null;
         if (this.state.currentExerciseType === "chooseExactTranslation")
             return (
-                <FlatList
-                    data={this.state.currentExercise.listeProposition}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({item}) => (
-                        <ResponseButton isSuccess={!this.state.disabledCheckButton} title={item}
-                                        onPress={() => this._handlePressResponse(item)}
-                                        disabled={!this.state.disabledCheckButton}/>
-                    )}
+                <ChooseExactTranslationExercise
+                    currentExercise={this.state.currentExercise}
+                    handlePressResponse={this._handlePressResponse}
+                    isUserSelectedResponse={this.state.isUserSelectedResponse}
+                    handleOnPressCheckButton={this._handleOnPressCheckButton}
                 />
             );
         if (this.state.currentExerciseType === "translatesSentence") {
             return (
-                <FlatList
-                    data={this.state.currentExercise.listeProposition}
-                    keyExtractor={(item, index) => index.toString()}
-                    numColumns={3}
-                    renderItem={({item}) => (
-                        <WordToSelect word={item}/>
-                    )}
+                <TranslateSentenceExercise
+                    currentExercise={this.state.currentExercise}
+                    handlePressResponse={this._handlePressResponse}
+                    isUserSelectedResponse={this.state.isUserSelectedResponse}
+                    handleOnPressCheckButton={this._handleOnPressCheckButton}
                 />
             );
         }
 
     }
 
-    _renderEnonceExercice() {
-        if (this.state.currentExercise != null)
-            return (
-                <Fragment>
-                    <Text style={styles.textInstructionExercice}>{this.state.currentExercise.enonceExercice}</Text>
-                    <Text style={styles.textAtraduire}>
-                        {this.state.currentExercise.phraseTraduire}
-                    </Text>
-                </Fragment>
-            )
-    }
 
     _handleOnPressCheckButton() {
         let currentExercise = this.state.currentExercise;
@@ -197,6 +189,7 @@ class ExerciseScreen extends React.Component {
                 disabledCheckButton: true,
                 isSuccessCurrentExercise: false,
                 currentExerciseIsFinish: false,
+                isUserSelectedResponse: false,
                 userResponse: null
             }
         )
@@ -216,23 +209,9 @@ class ExerciseScreen extends React.Component {
                                      style={{backgroundColor: '#8c8d8f', height: 20, borderRadius: 20}}/>
                     </View>
                 </View>
-                <View style={styles.viewInstructionExercice}>
-                    {this._renderEnonceExercice()}
-                    <View style={{marginTop:10}}>
-                        <View style={{flexDirection:'row', width: '95%'}}>
-                            <WordToSelect word="toddddddto"/>
-                            <WordToSelect word="tocdddddto"/>
-                            <WordToSelect word="tocdddddto"/>
-                            <WordToSelect word="tocdddddto"/>
-                            <WordToSelect word="tocdddddto"/>
-                        </View>
 
-                        <Divider />
-                    </View>
-                </View>
-                <View style={{alignSelf: 'center', marginTop: 50}}>
-                    {this._renderResponseProposition()}
-                </View>
+                {this._renderExercise()}
+
                 <View style={{
                     width: '100%',
                     alignSelf: 'center',

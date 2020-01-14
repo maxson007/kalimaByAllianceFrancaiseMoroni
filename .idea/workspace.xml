@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/components/ChooseExactTranslationExercise.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/WordToSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/WordToSelect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,22 +45,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images/screens/activity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/screens" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
+      <recent name="$PROJECT_DIR$/screens/activity" />
       <recent name="$PROJECT_DIR$/assets/images/screens/activity" />
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/assets/logos" />
-      <recent name="$PROJECT_DIR$/assets/images/screens/translate" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
+      <recent name="$PROJECT_DIR$/screens" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -98,7 +99,8 @@
       <workItem from="1578673841600" duration="23219000" />
       <workItem from="1578848107491" duration="10328000" />
       <workItem from="1578907352127" duration="24401000" />
-      <workItem from="1579001534890" duration="6652000" />
+      <workItem from="1579001534890" duration="6885000" />
+      <workItem from="1579028172576" duration="6148000" />
     </task>
     <servers />
   </component>
