@@ -20,10 +20,10 @@ button:{
     borderWidth: 2,
     backgroundColor: '#ffffff',
     shadowColor: 'rgba(0,0,0, .4)', // IOS
-    shadowOffset: {height: 12, width: 4}, // IOS
+    shadowOffset: {height: 4, width: 1}, // IOS
     shadowOpacity: 1, // IOS
-    shadowRadius: 6, //IOS
-    elevation: 4, // Android
+    shadowRadius: 3, //IOS
+    elevation: 5, // Android
     margin:5,
     height:50,
     alignItems: 'center',

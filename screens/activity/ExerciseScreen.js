@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     FlatList
 } from "react-native";
-import {ProgressBar} from 'react-native-paper';
+import {ProgressBar,Divider} from 'react-native-paper';
 import { MaterialIcons} from '@expo/vector-icons';
 import CheckButton from "../../components/CheckButton";
 import ResponseButton from "../../components/ResponseButton";
@@ -18,6 +18,14 @@ import Alert from "../../components/Alert";
 import WordToSelect from "../../components/WordToSelect";
 
 const ExoData = [
+    {
+        identifier: 3,
+        typeExercice: 'translatesSentence',
+        enonceExercice: 'Traduis cette phrase. ',
+        phraseTraduire: 'Je suis un garcon',
+        listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+        reponseExercice: 'Wami mtru baba'
+    },
     {
         identifier: 1,
         typeExercice: 'chooseExactTranslation',
@@ -34,14 +42,7 @@ const ExoData = [
         listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
         reponseExercice: 'Wami mtru baba'
     },
-    {
-        identifier: 3,
-        typeExercice: 'translatesSentence',
-        enonceExercice: 'Traduis cette phrase. ',
-        phraseTraduire: 'Je suis un garcon',
-        listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-        reponseExercice: 'Wami mtru baba'
-    },
+
     {
         identifier: 4,
         typeExercice: 'traduction-paires',
@@ -126,8 +127,6 @@ class ExerciseScreen extends React.Component {
             );
         if (this.state.currentExerciseType === "translatesSentence") {
             return (
-                <View>
-
                 <FlatList
                     data={this.state.currentExercise.listeProposition}
                     keyExtractor={(item, index) => index.toString()}
@@ -136,7 +135,6 @@ class ExerciseScreen extends React.Component {
                         <WordToSelect word={item}/>
                     )}
                 />
-                </View>
             );
         }
 
@@ -220,6 +218,17 @@ class ExerciseScreen extends React.Component {
                 </View>
                 <View style={styles.viewInstructionExercice}>
                     {this._renderEnonceExercice()}
+                    <View style={{marginTop:10}}>
+                        <View style={{flexDirection:'row', width: '95%'}}>
+                            <WordToSelect word="toddddddto"/>
+                            <WordToSelect word="tocdddddto"/>
+                            <WordToSelect word="tocdddddto"/>
+                            <WordToSelect word="tocdddddto"/>
+                            <WordToSelect word="tocdddddto"/>
+                        </View>
+
+                        <Divider />
+                    </View>
                 </View>
                 <View style={{alignSelf: 'center', marginTop: 50}}>
                     {this._renderResponseProposition()}
