@@ -17,9 +17,6 @@ class ChooseExactTranslationExercise extends React.Component {
         this._handleOnPressCheckButton=this._handleOnPressCheckButton.bind(this);
     }
 
-componentDidMount() {
-        console.log(this.props)
-}
 
     _handlePressResponse(item) {
         this.props.handlePressResponse(item);

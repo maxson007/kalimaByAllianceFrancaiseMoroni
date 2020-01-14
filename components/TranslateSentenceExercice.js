@@ -19,9 +19,6 @@ class TranslateSentenceExercise extends React.Component {
         this._handleOnPressCheckButton=this._handleOnPressCheckButton.bind(this);
     }
 
-componentDidMount() {
-        console.log(this.props)
-}
 
     _handlePressResponse(item) {
         this.props.handlePressResponse(item);
@@ -63,16 +60,19 @@ componentDidMount() {
                 <View style={styles.viewInstructionExercice}>
                     {this._renderEnonceExercice()}
                 </View>
-                <View style={{marginTop:10}}>
+                <View style={{marginTop:20, width: '85%', alignSelf: 'center'}}>
+                    <View style={{flexDirection:'row', width: '95%'}}>
+                        <WordToSelect word="dd"/>
+                        <WordToSelect word="dd"/>
+                        <WordToSelect word="dd"/>
+                    </View>
+                    <Divider style={{borderWidth:1, borderColor: '#97989a'}}/>
                     <View style={{flexDirection:'row', width: '95%'}}>
                         <WordToSelect word="toddddddto"/>
-                        <WordToSelect word="tocdddddto"/>
-                        <WordToSelect word="tocdddddto"/>
-                        <WordToSelect word="tocdddddto"/>
-                        <WordToSelect word="tocdddddto"/>
+                        <WordToSelect word="dd"/>
+                        <WordToSelect word="dd"/>
                     </View>
-
-                    <Divider />
+                    <Divider style={{borderWidth:1, borderColor: '#97989a'}}/>
                 </View>
 
                 <View style={{alignSelf: 'center', marginTop: 50}}>
