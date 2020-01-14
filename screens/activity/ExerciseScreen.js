@@ -5,17 +5,17 @@ import {
     View,
     Text,
     Platform,
-    Image,
     ActivityIndicator,
     TouchableOpacity,
     FlatList
 } from "react-native";
-import {Avatar, Card, Title, Paragraph, ProgressBar, Colors} from 'react-native-paper';
-import {Ionicons, MaterialCommunityIcons, FontAwesome, MaterialIcons} from '@expo/vector-icons';
+import {ProgressBar} from 'react-native-paper';
+import { MaterialIcons} from '@expo/vector-icons';
 import CheckButton from "../../components/CheckButton";
 import ResponseButton from "../../components/ResponseButton";
 import FinishButton from "../../components/FinishButton";
 import Alert from "../../components/Alert";
+import WordToSelect from "../../components/WordToSelect";
 
 const ExoData = [
     {
@@ -58,7 +58,7 @@ class ExerciseScreen extends React.Component {
         super(props);
         this.state = {
             currentExercise: null,
-            exerciseType: null,
+            currentExerciseType: null,
             progressBarValue: 0,
             currentIndex: 0,
             numberExercise: 0,
@@ -73,7 +73,7 @@ class ExerciseScreen extends React.Component {
         this.setState({isLoading: true});
         let currentExercise = ExoData[this.state.currentIndex];
         //console.log(currentExercise);
-        let exerciseType = currentExercise.typeExercice;
+        let currentExerciseType = currentExercise.typeExercice;
         let numberExercise = ExoData.length;
         let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
         //console.log(currentExercise.listeProposition);
@@ -82,7 +82,7 @@ class ExerciseScreen extends React.Component {
             currentExercise,
             numberExercise,
             progressBarValue,
-            exerciseType,
+            currentExerciseType,
             isLoading: false
         });
         // this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this)
@@ -112,7 +112,7 @@ class ExerciseScreen extends React.Component {
 
     _renderResponseProposition() {
         if (this.state.currentExercise == null) return null;
-        if (this.state.exerciseType == "chooseExactTranslation")
+        if (this.state.currentExerciseType === "chooseExactTranslation")
             return (
                 <FlatList
                     data={this.state.currentExercise.listeProposition}
@@ -123,7 +123,23 @@ class ExerciseScreen extends React.Component {
                                         disabled={!this.state.disabledCheckButton}/>
                     )}
                 />
-            )
+            );
+        if (this.state.currentExerciseType === "translatesSentence") {
+            return (
+                <View>
+
+                <FlatList
+                    data={this.state.currentExercise.listeProposition}
+                    keyExtractor={(item, index) => index.toString()}
+                    numColumns={3}
+                    renderItem={({item}) => (
+                        <WordToSelect word={item}/>
+                    )}
+                />
+                </View>
+            );
+        }
+
     }
 
     _renderEnonceExercice() {
@@ -169,20 +185,21 @@ class ExerciseScreen extends React.Component {
         this.setState({isLoading: true});
         let currentExercise = ExoData[this.state.currentIndex + 1];
         //console.log(currentExercise);
-        let exerciseType = currentExercise.typeExercice;
+        let currentExerciseType = currentExercise.typeExercice;
         let numberExercise = ExoData.length;
         let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
         this.setState(
             {
                 currentExercise,
-                exerciseType,
+                currentExerciseType,
                 progressBarValue,
                 currentIndex: this.state.currentIndex + 1,
                 numberExercise,
                 isLoading: false,
                 disabledCheckButton: true,
                 isSuccessCurrentExercise: false,
-                currentExerciseIsFinish: false
+                currentExerciseIsFinish: false,
+                userResponse: null
             }
         )
     }
