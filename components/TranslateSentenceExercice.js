@@ -54,6 +54,13 @@ class TranslateSentenceExercise extends React.Component {
             )
     }
 
+    _renderResponseView(wordArray){
+        wordArray.forEach(function (value, key){
+                return( <WordToSelect word={value}/>);
+
+        })
+
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -61,13 +68,13 @@ class TranslateSentenceExercise extends React.Component {
                     {this._renderEnonceExercice()}
                 </View>
                 <View style={{marginTop:20, width: '85%', alignSelf: 'center'}}>
-                    <View style={{flexDirection:'row', width: '95%'}}>
+                    <View style={{flexDirection:'row', width: '95%', height:60}}>
                         <WordToSelect word="dd"/>
                         <WordToSelect word="dd"/>
                         <WordToSelect word="dd"/>
                     </View>
                     <Divider style={{borderWidth:1, borderColor: '#97989a'}}/>
-                    <View style={{flexDirection:'row', width: '95%'}}>
+                    <View style={{flexDirection:'row', width: '95%',height:60}}>
                         <WordToSelect word="toddddddto"/>
                         <WordToSelect word="dd"/>
                         <WordToSelect word="dd"/>
