@@ -15,13 +15,13 @@ class TranslateSentenceExercise extends React.Component {
     constructor(props) {
         super(props);
 
-        this._handlePressResponse = this._handlePressResponse.bind(this);
+        this._handleOnPressResponse = this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
     }
 
 
-    _handlePressResponse(item) {
-        this.props.handlePressResponse(item);
+    _handleOnPressResponse(item) {
+        this.props.handleOnPressResponse(item);
     }
 
     _handleOnPressCheckButton() {
@@ -37,7 +37,7 @@ class TranslateSentenceExercise extends React.Component {
                 keyExtractor={(item, index) => index.toString()}
                 numColumns={3}
                 renderItem={({item}) => (
-                    <WordToSelect onPress={()=>this._handlePressResponse(item)} word={item}/>
+                    <WordToSelect onPress={()=>this._handleOnPressResponse(item)} word={item}/>
                 )}
             />
         );
@@ -62,15 +62,12 @@ class TranslateSentenceExercise extends React.Component {
         let lengthHalf = wordArray.length / 2;
         let part1=[];
         let part2=[];
-        if(lengthHalf>3){
+        if(lengthHalf>2){
              part1 = wordArray.slice(0, lengthHalf);
              part2 = wordArray.slice(lengthHalf, wordArray.length);
         }else{
-
             part1 = wordArray;
         }
-
-
         return (
             <Fragment>
                 <View style={{flexDirection: 'row', width: '95%', height: 60}}>

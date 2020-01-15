@@ -70,7 +70,7 @@ class ExerciseScreen extends React.Component {
             isUserSelectedResponse: false,
             userResponse: []
         };
-        this._handlePressResponse=this._handlePressResponse.bind(this);
+        this._handleOnPressResponse=this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton=this._handleOnPressCheckButton.bind(this);
     }
 
@@ -103,7 +103,7 @@ class ExerciseScreen extends React.Component {
         }
     }
 
-    _handlePressResponse(item) {
+    _handleOnPressResponse(item) {
 
         if (this.state.currentExerciseType === "chooseExactTranslation"){
             let listeProposition = [item];
@@ -118,18 +118,11 @@ class ExerciseScreen extends React.Component {
         }
 
         if (this.state.currentExerciseType === "translatesSentence"){
-            //
-            let currentExercise = this.state.currentExercise;
 
-            let listeProposition =currentExercise.listeProposition;
+            let listeProposition =this.state.currentExercise.listeProposition;
             let index = listeProposition.indexOf(item);
             let removed = listeProposition.splice(index,1);
             let userResponseTmp=[];
-            //if(this.state.userResponse!=null)
-            // userResponse=this.state.userResponse.push(item);
-            //else userResponse=[item] ;
-            //console.log(listeProposition)
-            //currentExercise.listeProposition = listeProposition;
             if(this.state.userResponse===null || this.state.userResponse.length===0){
                 userResponseTmp=[item];
             } else{
@@ -137,7 +130,6 @@ class ExerciseScreen extends React.Component {
                 userResponseTmp.push(item)
             }
             this.setState({
-
                 userResponse: userResponseTmp,
                 disabledCheckButton: false,
                 isUserSelectedResponse: true
@@ -151,7 +143,7 @@ class ExerciseScreen extends React.Component {
             return (
                 <ChooseExactTranslationExercise
                     currentExercise={this.state.currentExercise}
-                    handlePressResponse={this._handlePressResponse}
+                    handleOnPressResponse={this._handleOnPressResponse}
                     isUserSelectedResponse={this.state.isUserSelectedResponse}
                     handleOnPressCheckButton={this._handleOnPressCheckButton}
                 />
@@ -160,7 +152,7 @@ class ExerciseScreen extends React.Component {
             return (
                 <TranslateSentenceExercise
                     currentExercise={this.state.currentExercise}
-                    handlePressResponse={this._handlePressResponse}
+                    handleOnPressResponse={this._handleOnPressResponse}
                     isUserSelectedResponse={this.state.isUserSelectedResponse}
                     handleOnPressCheckButton={this._handleOnPressCheckButton}
                     userResponse={this.state.userResponse}

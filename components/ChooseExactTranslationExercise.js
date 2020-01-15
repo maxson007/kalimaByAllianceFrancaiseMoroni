@@ -13,13 +13,13 @@ class ChooseExactTranslationExercise extends React.Component {
     constructor(props) {
         super(props);
 
-        this._handlePressResponse=this._handlePressResponse.bind(this);
+        this._handleOnPressResponse=this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton=this._handleOnPressCheckButton.bind(this);
     }
 
 
-    _handlePressResponse(item) {
-        this.props.handlePressResponse(item);
+    _handleOnPressResponse(item) {
+        this.props.handleOnPressResponse(item);
     }
     _handleOnPressCheckButton(){
         this.props._handleOnPressCheckButton();
@@ -34,7 +34,7 @@ class ChooseExactTranslationExercise extends React.Component {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({item}) => (
                     <ResponseButton isSuccess={this.props.isUserSelectedResponse} title={item}
-                                    onPress={() => this._handlePressResponse(item)}
+                                    onPress={() => this._handleOnPressResponse(item)}
                                     disabled={this.props.isUserSelectedResponse}/>
                 )}
             />
