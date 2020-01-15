@@ -54,12 +54,23 @@ class TranslateSentenceExercise extends React.Component {
             )
     }
 
-    _renderResponseView(wordArray){
-        wordArray.forEach(function (value, key){
-                return( <WordToSelect word={value}/>);
-
-        })
-
+    _renderResponseView(index){
+        const wordArray=this.props.currentExercise.listeProposition;
+        let lengthHalf=wordArray.length/2;
+        let part1=wordArray.slice(0,lengthHalf);
+        let part2=wordArray.slice(lengthHalf, wordArray.length);
+        if(index===0)
+            part1.forEach(
+             function (value){
+                 return ( <WordToSelect word={value}/>);
+             }
+         );
+        else
+            part2.forEach(
+                function (value){
+                    return ( <WordToSelect word={value}/>);
+                }
+            );
     }
     render() {
         return (
@@ -69,15 +80,11 @@ class TranslateSentenceExercise extends React.Component {
                 </View>
                 <View style={{marginTop:20, width: '85%', alignSelf: 'center'}}>
                     <View style={{flexDirection:'row', width: '95%', height:60}}>
-                        <WordToSelect word="dd"/>
-                        <WordToSelect word="dd"/>
-                        <WordToSelect word="dd"/>
+                        {this._renderResponseView(0)}
                     </View>
                     <Divider style={{borderWidth:1, borderColor: '#97989a'}}/>
                     <View style={{flexDirection:'row', width: '95%',height:60}}>
-                        <WordToSelect word="toddddddto"/>
-                        <WordToSelect word="dd"/>
-                        <WordToSelect word="dd"/>
+
                     </View>
                     <Divider style={{borderWidth:1, borderColor: '#97989a'}}/>
                 </View>
