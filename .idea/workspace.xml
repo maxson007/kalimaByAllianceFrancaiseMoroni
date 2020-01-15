@@ -4,7 +4,6 @@
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/WordToSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/WordToSelect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +99,7 @@
       <workItem from="1578848107491" duration="10328000" />
       <workItem from="1578907352127" duration="24401000" />
       <workItem from="1579001534890" duration="6885000" />
-      <workItem from="1579028172576" duration="13461000" />
+      <workItem from="1579028172576" duration="16693000" />
     </task>
     <servers />
   </component>
@@ -116,10 +115,10 @@
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="270" y="48" key="SettingsEditor/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1578091980678" />
-    <state width="625" height="500" key="SwitcherDM" timestamp="1578776329783">
+    <state width="625" height="500" key="SwitcherDM" timestamp="1579090209712">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
-    <state width="625" height="500" key="SwitcherDM/0.23.1680.947@0.23.1680.947" timestamp="1578776329783" />
+    <state width="625" height="500" key="SwitcherDM/0.23.1680.947@0.23.1680.947" timestamp="1579090209712" />
     <state x="695" y="27" width="789" height="839" key="find.popup" timestamp="1578782293970">
       <screen x="0" y="23" width="1680" height="947" />
     </state>

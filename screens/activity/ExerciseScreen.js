@@ -68,7 +68,7 @@ class ExerciseScreen extends React.Component {
             isSuccessCurrentExercise: null,
             currentExerciseIsFinish: false,
             isUserSelectedResponse: false,
-            userResponse: null
+            userResponse: []
         };
         this._handlePressResponse=this._handlePressResponse.bind(this);
         this._handleOnPressCheckButton=this._handleOnPressCheckButton.bind(this);
@@ -111,7 +111,7 @@ class ExerciseScreen extends React.Component {
             currentExercise.listeProposition = listeProposition;
             this.setState({
                 currentExercise,
-                userResponse: item,
+                userResponse: [item],
                 disabledCheckButton: false,
                 isUserSelectedResponse: true
             });
@@ -120,13 +120,25 @@ class ExerciseScreen extends React.Component {
         if (this.state.currentExerciseType === "translatesSentence"){
             //
             let currentExercise = this.state.currentExercise;
-            let listeProposition =currentExercise.listeProposition.pop(item);
-            console.log(listeProposition)
-            currentExercise.listeProposition = listeProposition;
 
+            let listeProposition =currentExercise.listeProposition;
+            let index = listeProposition.indexOf(item);
+            let removed = listeProposition.splice(index,1);
+            let userResponseTmp=[];
+            //if(this.state.userResponse!=null)
+            // userResponse=this.state.userResponse.push(item);
+            //else userResponse=[item] ;
+            //console.log(listeProposition)
+            //currentExercise.listeProposition = listeProposition;
+            if(this.state.userResponse===null || this.state.userResponse.length===0){
+                userResponseTmp=[item];
+            } else{
+                userResponseTmp=this.state.userResponse;
+                userResponseTmp.push(item)
+            }
             this.setState({
 
-                userResponse: item,
+                userResponse: userResponseTmp,
                 disabledCheckButton: false,
                 isUserSelectedResponse: true
             });
@@ -151,6 +163,7 @@ class ExerciseScreen extends React.Component {
                     handlePressResponse={this._handlePressResponse}
                     isUserSelectedResponse={this.state.isUserSelectedResponse}
                     handleOnPressCheckButton={this._handleOnPressCheckButton}
+                    userResponse={this.state.userResponse}
                 />
             );
         }
@@ -160,7 +173,7 @@ class ExerciseScreen extends React.Component {
 
     _handleOnPressCheckButton() {
         this.setState({
-            isSuccessCurrentExercise: (this.state.userResponse === this.state.currentExercise.reponseExercice),
+            isSuccessCurrentExercise: (this.state.userResponse.join(" ") === this.state.currentExercise.reponseExercice),
             currentExerciseIsFinish: true
         });
     }
@@ -202,7 +215,7 @@ class ExerciseScreen extends React.Component {
                 isSuccessCurrentExercise: false,
                 currentExerciseIsFinish: false,
                 isUserSelectedResponse: false,
-                userResponse: null
+                userResponse: []
             }
         )
     }

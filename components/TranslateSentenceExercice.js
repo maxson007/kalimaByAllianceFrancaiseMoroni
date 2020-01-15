@@ -56,10 +56,20 @@ class TranslateSentenceExercise extends React.Component {
     }
 
     _renderResponseView() {
-        const wordArray = this.props.currentExercise.listeProposition;
+        let wordArray = this.props.userResponse;
+        //console.log(wordArray);
+        if(wordArray==null)return;
         let lengthHalf = wordArray.length / 2;
-        let part1 = wordArray.slice(0, lengthHalf);
-        let part2 = wordArray.slice(lengthHalf, wordArray.length);
+        let part1=[];
+        let part2=[];
+        if(lengthHalf>3){
+             part1 = wordArray.slice(0, lengthHalf);
+             part2 = wordArray.slice(lengthHalf, wordArray.length);
+        }else{
+
+            part1 = wordArray;
+        }
+
 
         return (
             <Fragment>
