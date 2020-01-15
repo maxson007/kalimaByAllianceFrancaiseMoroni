@@ -20,7 +20,14 @@ import ChooseExactTranslationExercise from "../../components/ChooseExactTranslat
 import TranslateSentenceExercise from "../../components/TranslateSentenceExercice";
 
 const ExoData = [
-
+    {
+        identifier: 3,
+        typeExercice: 'translatesSentence',
+        enonceExercice: 'Traduis cette phrase. ',
+        phraseTraduire: 'Je suis un garcon',
+        listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+        reponseExercice: 'Wami mtru baba'
+    },
     {
         identifier: 1,
         typeExercice: 'chooseExactTranslation',
@@ -37,14 +44,7 @@ const ExoData = [
         listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
         reponseExercice: 'Wami mtru baba'
     },
-    {
-        identifier: 3,
-        typeExercice: 'translatesSentence',
-        enonceExercice: 'Traduis cette phrase. ',
-        phraseTraduire: 'Je suis un garcon',
-        listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-        reponseExercice: 'Wami mtru baba'
-    },
+
     {
         identifier: 4,
         typeExercice: 'traduction-paires',

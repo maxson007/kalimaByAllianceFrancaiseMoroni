@@ -6,7 +6,7 @@ import {
     FlatList
 } from "react-native";
 import ResponseButton from "./ResponseButton";
-import {ProgressBar,Divider} from 'react-native-paper';
+import {ProgressBar, Divider} from 'react-native-paper';
 import WordToSelect from "./WordToSelect";
 
 
@@ -15,15 +15,16 @@ class TranslateSentenceExercise extends React.Component {
     constructor(props) {
         super(props);
 
-        this._handlePressResponse=this._handlePressResponse.bind(this);
-        this._handleOnPressCheckButton=this._handleOnPressCheckButton.bind(this);
+        this._handlePressResponse = this._handlePressResponse.bind(this);
+        this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
     }
 
 
     _handlePressResponse(item) {
         this.props.handlePressResponse(item);
     }
-    _handleOnPressCheckButton(){
+
+    _handleOnPressCheckButton() {
         this.props._handleOnPressCheckButton();
     }
 
@@ -43,7 +44,7 @@ class TranslateSentenceExercise extends React.Component {
     }
 
     _renderEnonceExercice() {
-        if (this.props.currentExercise!= null)
+        if (this.props.currentExercise != null)
             return (
                 <Fragment>
                     <Text style={styles.textInstructionExercice}>{this.props.currentExercise.enonceExercice}</Text>
@@ -54,39 +55,46 @@ class TranslateSentenceExercise extends React.Component {
             )
     }
 
-    _renderResponseView(index){
-        const wordArray=this.props.currentExercise.listeProposition;
-        let lengthHalf=wordArray.length/2;
-        let part1=wordArray.slice(0,lengthHalf);
-        let part2=wordArray.slice(lengthHalf, wordArray.length);
-        if(index===0)
-            part1.forEach(
-             function (value){
-                 return ( <WordToSelect word={value}/>);
-             }
-         );
-        else
-            part2.forEach(
-                function (value){
-                    return ( <WordToSelect word={value}/>);
-                }
-            );
+    _renderResponseView() {
+        const wordArray = this.props.currentExercise.listeProposition;
+        let lengthHalf = wordArray.length / 2;
+        let part1 = wordArray.slice(0, lengthHalf);
+        let part2 = wordArray.slice(lengthHalf, wordArray.length);
+
+        return (
+            <Fragment>
+                <View style={{flexDirection: 'row', width: '95%', height: 60}}>
+                    {
+                        part1.map(
+                            function (value) {
+                                return <WordToSelect word={value}/>;
+                            }
+                        )
+                    }
+                </View>
+                <Divider style={{borderWidth: 1, borderColor: '#97989a'}}/>
+                <View style={{flexDirection: 'row', width: '95%', height: 60}}>
+                    {
+                        part2.map(
+                            function (value) {
+                                return <WordToSelect word={value}/>;
+                            }
+                        )
+                    }
+                </View>
+                <Divider style={{borderWidth: 1, borderColor: '#97989a'}}/>
+            </Fragment>
+        );
     }
+
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.viewInstructionExercice}>
                     {this._renderEnonceExercice()}
                 </View>
-                <View style={{marginTop:20, width: '85%', alignSelf: 'center'}}>
-                    <View style={{flexDirection:'row', width: '95%', height:60}}>
-                        {this._renderResponseView(0)}
-                    </View>
-                    <Divider style={{borderWidth:1, borderColor: '#97989a'}}/>
-                    <View style={{flexDirection:'row', width: '95%',height:60}}>
-
-                    </View>
-                    <Divider style={{borderWidth:1, borderColor: '#97989a'}}/>
+                <View style={{marginTop: 20, width: '85%', alignSelf: 'center'}}>
+                    {this._renderResponseView()}
                 </View>
 
                 <View style={{alignSelf: 'center', marginTop: 50}}>
