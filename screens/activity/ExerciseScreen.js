@@ -16,8 +16,17 @@ import FinishButton from "../../components/FinishButton";
 import Alert from "../../components/Alert";
 import ChooseExactTranslationExercise from "../../components/ChooseExactTranslationExercise";
 import TranslateSentenceExercise from "../../components/TranslateSentenceExercice";
+import PairsTranslationExercise from "../../components/PairsTranslationExercise";
 
 const ExoData = [
+
+    {
+        identifier: 4,
+        typeExercice: 'traductionPaires',
+        enonceExercice: 'Tape sur les paires',
+        listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+        listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
+    },
     {
         identifier: 3,
         typeExercice: 'translatesSentence',
@@ -41,14 +50,6 @@ const ExoData = [
         phraseTraduire: 'Je suis un garcon',
         listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
         reponseExercice: 'Wami mtru baba'
-    },
-
-    {
-        identifier: 4,
-        typeExercice: 'traduction-paires',
-        enonceExercice: 'Tape sur les paires',
-        listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-        listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
     }
 ];
 
@@ -159,8 +160,20 @@ class ExerciseScreen extends React.Component {
                 />
             );
         }
+        //traductionPaires
+        if (this.state.currentExerciseType === "traductionPaires") {
+            return (
+                <PairsTranslationExercise
+                    currentExercise={this.state.currentExercise}
+                    handleOnPressResponse={this._handleOnPressResponse}
+                    isUserSelectedResponse={this.state.isUserSelectedResponse}
+                    handleOnPressCheckButton={this._handleOnPressCheckButton}
+                    userResponse={this.state.userResponse}
+                />
+            );
+        }
 
-    }
+        }
 
 
     _handleOnPressCheckButton() {
