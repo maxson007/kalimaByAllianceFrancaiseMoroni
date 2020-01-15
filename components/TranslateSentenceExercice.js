@@ -37,7 +37,7 @@ class TranslateSentenceExercise extends React.Component {
                 keyExtractor={(item, index) => index.toString()}
                 numColumns={3}
                 renderItem={({item}) => (
-                    <WordToSelect word={item}/>
+                    <WordToSelect onPress={()=>this._handlePressResponse(item)} word={item}/>
                 )}
             />
         );

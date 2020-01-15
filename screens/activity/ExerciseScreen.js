@@ -12,10 +12,8 @@ import {
 import {ProgressBar,Divider} from 'react-native-paper';
 import { MaterialIcons} from '@expo/vector-icons';
 import CheckButton from "../../components/CheckButton";
-import ResponseButton from "../../components/ResponseButton";
 import FinishButton from "../../components/FinishButton";
 import Alert from "../../components/Alert";
-import WordToSelect from "../../components/WordToSelect";
 import ChooseExactTranslationExercise from "../../components/ChooseExactTranslationExercise";
 import TranslateSentenceExercise from "../../components/TranslateSentenceExercice";
 
@@ -107,16 +105,32 @@ class ExerciseScreen extends React.Component {
 
     _handlePressResponse(item) {
 
-        //console.log(item)
-        let listeProposition = [item];
-        let currentExercise = this.state.currentExercise;
-        currentExercise.listeProposition = listeProposition;
-        this.setState({
-            currentExercise,
-            userResponse: item,
-            disabledCheckButton: false,
-            isUserSelectedResponse: true
-        });
+        if (this.state.currentExerciseType === "chooseExactTranslation"){
+            let listeProposition = [item];
+            let currentExercise = this.state.currentExercise;
+            currentExercise.listeProposition = listeProposition;
+            this.setState({
+                currentExercise,
+                userResponse: item,
+                disabledCheckButton: false,
+                isUserSelectedResponse: true
+            });
+        }
+
+        if (this.state.currentExerciseType === "translatesSentence"){
+            //
+            let currentExercise = this.state.currentExercise;
+            let listeProposition =currentExercise.listeProposition.pop(item);
+            console.log(listeProposition)
+            currentExercise.listeProposition = listeProposition;
+
+            this.setState({
+
+                userResponse: item,
+                disabledCheckButton: false,
+                isUserSelectedResponse: true
+            });
+        }
     }
 
     _renderExercise() {

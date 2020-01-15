@@ -3,7 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const WordToSelect=(props)=>{
     return (
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={props.onPress} style={styles.button}>
             <Text style={styles.text}>
                 {props.word}
             </Text>
