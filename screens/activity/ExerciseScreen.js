@@ -20,13 +20,7 @@ import PairsTranslationExercise from "../../components/PairsTranslationExercise"
 
 const ExoData = [
 
-    {
-        identifier: 4,
-        typeExercice: 'traductionPaires',
-        enonceExercice: 'Tape sur les paires',
-        listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-        listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
-    },
+
     {
         identifier: 3,
         typeExercice: 'translatesSentence',
@@ -50,6 +44,13 @@ const ExoData = [
         phraseTraduire: 'Je suis un garcon',
         listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
         reponseExercice: 'Wami mtru baba'
+    },
+    {
+        identifier: 4,
+        typeExercice: 'traductionPaires',
+        enonceExercice: 'Tape sur les paires',
+        listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+        listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
     }
 ];
 
@@ -281,7 +282,7 @@ class ExerciseScreen extends React.Component {
                 numberExercise,
                 isLoading: false,
                 disabledCheckButton: true,
-                isSuccessCurrentExercise: false,
+                isSuccessCurrentExercise: null,
                 currentExerciseIsFinish: false,
                 isUserSelectedResponse: false,
                 userResponse: []

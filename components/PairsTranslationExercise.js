@@ -72,7 +72,7 @@ class PairsTranslationExercise extends React.Component {
                 </View>
                 <View style={{ alignItems: 'center',height: 100}}>
                     {
-                        this.props.isPairsSuccess===null ? null:
+                        this.props.isPairsSuccess==null ? null:
                         <Alert title={this.props.isPairsSuccess ? "Bonne réponse" : "Mauvaise réponse"}
                                type={this.props.isPairsSuccess ? "success" : "danger"}/>
                     }
