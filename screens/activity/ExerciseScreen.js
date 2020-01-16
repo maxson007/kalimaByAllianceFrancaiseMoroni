@@ -69,7 +69,7 @@ class ExerciseScreen extends React.Component {
             isSuccessCurrentExercise: null,
             currentExerciseIsFinish: false,
             isUserSelectedResponse: false,
-            userResponse: []
+            userResponse: [],
         };
         this._handleOnPressResponse = this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
@@ -148,17 +148,23 @@ class ExerciseScreen extends React.Component {
             userResponseTmp = this.state.userResponse;
             userResponseTmp.push(item)
         }
+        if (userResponseTmp.length < 2)
         this.setState({
             userResponse: userResponseTmp,
             isUserSelectedResponse: true
         });
+
         if (userResponseTmp.length === 2) {
-            let index;
+            let index1;
+            let index2;
+            this.setState({
+                userResponse: []
+            });
             //lorsqu'on selection un mot comorien en premier
-            if ((index = listeMotComorien.indexOf(userResponseTmp[0])) > -1) {
+            if ((index1 = listeMotComorien.indexOf(userResponseTmp[0])) > -1) {
                 let index_fr = listeMotFrancais.indexOf(userResponseTmp[1]);
-                if (index === index_fr) {
-                    listeMotComorien.splice(index, 1);
+                if (index1 === index_fr) {
+                    listeMotComorien.splice(index1, 1);
                     listeMotFrancais.splice(index_fr, 1);
                     let currentExercise = this.state.currentExercise;
                     currentExercise.listeMotComorien = listeMotComorien;
@@ -166,33 +172,29 @@ class ExerciseScreen extends React.Component {
                     this.setState({
                         currentExercise,
                         isSuccessCurrentExercise: true,
-                        userResponse: [],
                     });
                 } else {
                     this.setState({
                         isSuccessCurrentExercise: false,
-                        userResponse: [],
                     });
                 }
             }
             //mot francais en premier
-            if ((index = listeMotFrancais.indexOf(userResponseTmp[0])) > 1) {
+            if ((index2 = listeMotFrancais.indexOf(userResponseTmp[0])) > -1) {
                 let index_km = listeMotComorien.indexOf(userResponseTmp[1]);
-                if (index === index_km) {
+                if (index2 === index_km) {
                     listeMotComorien.splice(index_km, 1);
-                    listeMotFrancais.splice(index, 1);
+                    listeMotFrancais.splice(index2, 1);
                     let currentExercise = this.state.currentExercise;
                     currentExercise.listeMotComorien = listeMotComorien;
                     currentExercise.listeMotFrancais = listeMotFrancais;
                     this.setState({
                         currentExercise,
                         isSuccessCurrentExercise: true,
-                        userResponse: [],
                     });
                 } else {
                     this.setState({
                         isSuccessCurrentExercise: false,
-                        userResponse: [],
                     });
                 }
             }
@@ -224,7 +226,6 @@ class ExerciseScreen extends React.Component {
         //traductionPaires
         if (this.state.currentExerciseType === "traductionPaires") {
             return (
-                <Fragment>
                     <PairsTranslationExercise
                         currentExercise={this.state.currentExercise}
                         handleOnPressResponse={this._handleOnPressPairs}
@@ -233,7 +234,6 @@ class ExerciseScreen extends React.Component {
                         userResponse={this.state.userResponse}
                         isPairsSuccess={this.state.isSuccessCurrentExercise}
                     />
-                </Fragment>
             );
         }
 
