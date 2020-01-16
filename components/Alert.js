@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {AntDesign, MaterialCommunityIcons, FontAwesome, MaterialIcons} from '@expo/vector-icons';
+import { StyleSheet, Text, View} from 'react-native';
+import {AntDesign,  MaterialIcons} from '@expo/vector-icons';
 
 // type success, danger, warning
 class Alert extends React.Component{

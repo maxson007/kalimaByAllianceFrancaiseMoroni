@@ -5,9 +5,8 @@ import {
     Text,
     FlatList
 } from "react-native";
-import ResponseButton from "./ResponseButton";
-import {ProgressBar, Divider} from 'react-native-paper';
 import WordToSelect from "./WordToSelect";
+import Alert from "./Alert";
 
 
 class PairsTranslationExercise extends React.Component {
@@ -25,12 +24,12 @@ class PairsTranslationExercise extends React.Component {
     }
 
     _handleOnPressCheckButton() {
-        this.props._handleOnPressCheckButton();
+        this.props.handleOnPressCheckButton();
     }
 
     _isWordSelected(item){
         if(this.props.userResponse===null) return false;
-        if(this.props.userResponse.indexOf(item)!==-1) return true;
+        if(this.props.userResponse.indexOf(item)>-1) return true;
         return false;
     }
 
@@ -39,8 +38,7 @@ class PairsTranslationExercise extends React.Component {
         let listePropositionTmp=this.props.currentExercise.listeMotComorien;
         let listeProposition=listePropositionTmp.concat(this.props.currentExercise.listeMotFrancais);
         listeProposition.sort(() => Math.random() - 0.5);
-
-        console.log(listeProposition);
+console.log(listePropositionTmp);
         return (
             <FlatList
                 data={listeProposition}
@@ -72,8 +70,14 @@ class PairsTranslationExercise extends React.Component {
                 <View style={styles.viewInstructionExercice}>
                     {this._renderEnonceExercice()}
                 </View>
-
-                <View style={{alignSelf: 'center', marginTop: 50}}>
+                <View style={{ alignItems: 'center', marginTop:-10}}>
+                    {
+                        this.props.isPairsSuccess===null ? null:
+                        <Alert title={this.props.isPairsSuccess ? "Bonne réponse" : "Mauvaise réponse"}
+                               type={this.props.isPairsSuccess ? "success" : "danger"}/>
+                    }
+                </View>
+                <View style={{alignSelf: 'center', marginTop:5}}>
                     {this._renderResponseProposition()}
                 </View>
             </View>
