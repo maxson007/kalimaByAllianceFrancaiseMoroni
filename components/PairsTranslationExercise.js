@@ -37,7 +37,8 @@ class PairsTranslationExercise extends React.Component {
         if (this.props.currentExercise == null) return null;
         let listePropositionTmp=this.props.currentExercise.listeMotComorien;
         let listeProposition=listePropositionTmp.concat(this.props.currentExercise.listeMotFrancais);
-        if(this.props.isPairsSuccess===null) listeProposition.sort(() => Math.random() - 0.5);
+       if(this.props.isPairsSuccess===true)
+            listeProposition.sort(() => Math.random() - 0.5);
 
         return (
             <FlatList
