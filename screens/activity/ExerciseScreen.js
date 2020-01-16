@@ -73,12 +73,13 @@ class ExerciseScreen extends React.Component {
         };
         this._handleOnPressResponse=this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton=this._handleOnPressCheckButton.bind(this);
+        this._handleOnPressPairs=this._handleOnPressPairs.bind(this);
     }
 
     componentDidMount() {
         this.setState({isLoading: true});
         let currentExercise = ExoData[this.state.currentIndex];
-        //console.log(currentExercise);
+       // console.log(currentExercise);
         let currentExerciseType = currentExercise.typeExercice;
         let numberExercise = ExoData.length;
         let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
@@ -119,7 +120,6 @@ class ExerciseScreen extends React.Component {
         }
 
         if (this.state.currentExerciseType === "translatesSentence"){
-
             let listeProposition =this.state.currentExercise.listeProposition;
             let index = listeProposition.indexOf(item);
             let removed = listeProposition.splice(index,1);
@@ -135,6 +135,33 @@ class ExerciseScreen extends React.Component {
                 disabledCheckButton: false,
                 isUserSelectedResponse: true
             });
+        }
+    }
+
+    _handleOnPressPairs(item){
+        console.log(this.state.currentExercise);
+        let listeMotComorien =this.state.currentExercise.listeMotComorien;
+        let listeMotFrancais =this.state.currentExercise.listeMotFrancais;
+        let userResponseTmp=[];
+        if(this.state.userResponse===null || this.state.userResponse.length===0){
+            userResponseTmp=[item];
+        } else{
+            userResponseTmp=this.state.userResponse;
+            userResponseTmp.push(item)
+        }
+        this.setState({
+            userResponse: userResponseTmp,
+            isUserSelectedResponse: true
+        });
+        if(userResponseTmp.length===2){
+            let index;
+            if( (index=listeMotComorien.indexOf(userResponseTmp[0]))!==-1){
+                let index2=listeMotFrancais.indexOf(userResponseTmp[1]);
+
+            }
+            if(listeMotFrancais.indexOf(userResponseTmp[0])){
+
+            }
         }
     }
 
@@ -165,7 +192,7 @@ class ExerciseScreen extends React.Component {
             return (
                 <PairsTranslationExercise
                     currentExercise={this.state.currentExercise}
-                    handleOnPressResponse={this._handleOnPressResponse}
+                    handleOnPressResponse={this._handleOnPressPairs}
                     isUserSelectedResponse={this.state.isUserSelectedResponse}
                     handleOnPressCheckButton={this._handleOnPressCheckButton}
                     userResponse={this.state.userResponse}

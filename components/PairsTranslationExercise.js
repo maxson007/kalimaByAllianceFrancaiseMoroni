@@ -28,6 +28,12 @@ class PairsTranslationExercise extends React.Component {
         this.props._handleOnPressCheckButton();
     }
 
+    _isWordSelected(item){
+        if(this.props.userResponse===null) return false;
+        if(this.props.userResponse.indexOf(item)!==-1) return true;
+        return false;
+    }
+
     _renderResponseProposition() {
         if (this.props.currentExercise == null) return null;
         let listePropositionTmp=this.props.currentExercise.listeMotComorien;
@@ -41,7 +47,7 @@ class PairsTranslationExercise extends React.Component {
                 keyExtractor={(item, index) => index.toString()}
                 numColumns={3}
                 renderItem={({item}) => (
-                    <WordToSelect onPress={()=>this._handleOnPressResponse(item)} word={item}/>
+                    <WordToSelect onPress={()=>this._handleOnPressResponse(item)} word={item} isSelected={this._isWordSelected(item)}/>
                 )}
             />
         );
