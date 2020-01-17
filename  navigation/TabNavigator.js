@@ -4,56 +4,70 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import ChooseActivityThemeScreen from "../screens/ChooseActivityThemeScreen";
 import TranslationScreen from "../screens/TranslationScreen";
 import ProfileScreen from "../screens/profile/ProfileScreen";
-import {Ionicons, MaterialCommunityIcons,FontAwesome } from '@expo/vector-icons';
+import {Ionicons, MaterialCommunityIcons, FontAwesome} from '@expo/vector-icons';
 import UserManualScreen from "../screens/UserManualScreen";
 import {createStackNavigator} from "react-navigation-stack";
 import ChooseActivityScreen from "../screens/activity/ChooseActivityScreen";
 import ExerciseScreen from "../screens/activity/ExerciseScreen";
 import ExerciseResultScreen from "../screens/activity/ExerciseResultScreen";
 
-const ChooseActivityStackNavigator = createStackNavigator({
-    ChooseActivityTheme: {
-        screen: ChooseActivityThemeScreen,
-        navigationOptions: {
-            title: 'Thèmes',
-        }
-    },
-    ChooseActivity: {
-        screen: ChooseActivityScreen,
-        navigationOptions: {
-            title: 'Activités',
-        }
-    },
 
-});
-
-const ExerciseStackNavigator= createStackNavigator({
-    ChooseActivityTheme: {
-        screen: ChooseActivityStackNavigator
-    },
-    Exercise: {
-        screen: ExerciseScreen,
-        navigationOptions: {
-            title: 'Exercice',
-        }
-    },
-    ExerciseResult: {
-        screen: ExerciseResultScreen,
-        navigationOptions: {
-            title: 'Résultat',
-        }
-    },
-} , {
-    mode: 'modal', headerMode: 'none',
-}
-
+const ExerciseStackNavigator = createStackNavigator({
+        Exercise: {
+            screen: ExerciseScreen,
+            navigationOptions: {
+                title: 'Exercice',
+            }
+        },
+        ExerciseResult: {
+            screen: ExerciseResultScreen,
+            navigationOptions: {
+                title: 'Résultat',
+            }
+        },
+    }, {
+        mode: 'modal', headerMode: 'none',
+    }
 );
 
-const TabNavigator = createBottomTabNavigator(
+const ChooseActivityStackNavigator = createStackNavigator({
+        ChooseActivityTheme: {
+            screen: ChooseActivityThemeScreen,
+            navigationOptions: {
+                title: 'Thèmes',
+            }
+        },
+        ChooseActivity: {
+            screen: ChooseActivityScreen,
+            navigationOptions: {
+                title: 'Activités',
+            }
+        },
+        ExerciseStack: {
+            screen: ExerciseStackNavigator,
+        },
 
+    }, {
+        mode: 'modal', headerMode: 'none',
+    }
+);
+
+
+const ActivityContainer = createAppContainer(ChooseActivityStackNavigator);
+ActivityContainer.navigationOptions = ({ navigation }) => {
+    let { routeName } = navigation.state.routes[navigation.state.index];
+    let navigationOptions = {};
+
+    if (routeName === 'ExerciseStack') {
+        navigationOptions.tabBarVisible = false;
+    }
+
+    return navigationOptions;
+};
+const TabNavigator = createBottomTabNavigator(
     {
         ChooseActivity: {
-            screen: ChooseActivityStackNavigator,
+            screen: ActivityContainer,
             navigationOptions: {
                 title: 'Activité'
             }
@@ -90,7 +104,9 @@ const TabNavigator = createBottomTabNavigator(
             activeTintColor: '#db002e',
             inactiveTintColor: '#8c8d8f'
         },
-    }
+
+    },
+
 );
 
 export default createAppContainer(TabNavigator);

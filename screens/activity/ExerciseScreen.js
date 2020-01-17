@@ -19,13 +19,7 @@ import TranslateSentenceExercise from "../../components/TranslateSentenceExercic
 import PairsTranslationExercise from "../../components/PairsTranslationExercise";
 
 const ExoData = [
-    {
-        identifier: 4,
-        typeExercice: 'traductionPaires',
-        enonceExercice: 'Tape sur les paires',
-        listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-        listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
-    },
+
 
     {
         identifier: 3,
@@ -35,6 +29,7 @@ const ExoData = [
         listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
         reponseExercice: 'Wami mtru baba'
     },
+
     {
         identifier: 1,
         typeExercice: 'chooseExactTranslation',
@@ -50,7 +45,13 @@ const ExoData = [
         phraseTraduire: 'Je suis un garcon',
         listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
         reponseExercice: 'Wami mtru baba'
-    }
+    }   , {
+        identifier: 4,
+        typeExercice: 'traductionPaires',
+        enonceExercice: 'Tape sur les paires',
+        listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+        listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
+    },
 ];
 
 
@@ -76,7 +77,11 @@ class ExerciseScreen extends React.Component {
         this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
         this._handleOnPressPairs = this._handleOnPressPairs.bind(this);
     }
-
+    static navigationOptions = {
+        header: null,
+        mode: 'modal',
+        headerMode: 'none',
+    };
     componentDidMount() {
         this.setState({isLoading: true});
         let currentExercise = ExoData[this.state.currentIndex];
@@ -286,14 +291,18 @@ class ExerciseScreen extends React.Component {
     _handleOnPressFinishButton() {
         this.setState({isLoading: true});
         this._scoringCalcule();
+        let numberExercise = ExoData.length;
+        let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
         if((this.state.currentIndex + 1) >= this.state.numberExercise){
-            console.log(this.props)
+            console.log()
+            this.props.navigation.navigate('ExerciseResult', {progressBarValue: progressBarValue, score:this.state.score})
+            return;
         }
         let currentExercise = ExoData[this.state.currentIndex + 1];
         //console.log(currentExercise);
         let currentExerciseType = currentExercise.typeExercice;
-        let numberExercise = ExoData.length;
-        let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
+
+        console.log(progressBarValue);
         this.setState(
             {
                 currentExercise,

@@ -10,7 +10,7 @@ export default function (props) {
         TouchableNativeFeedback;
 
     return (
-        <Touchable onPress={()=>alert("touch")}>
+        <Touchable onPress={props.onPress}>
             <Card style={{
                 width: '90%',
                 alignSelf: 'center',

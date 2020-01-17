@@ -10,7 +10,16 @@ class ChooseActivityScreen extends React.Component {
     constructor(props) {
         super(props);
     }
+    static navigationOptions = {
+        header: null,
+        mode: 'modal',
+        headerMode: 'none',
+    };
 
+    _handleOnPressCardActivity(){
+        console.log( "=============>TEST<===============")
+        this.props.navigation.navigate('ExerciseStack');
+    }
 
     render() {
         const data = [
@@ -37,7 +46,7 @@ class ChooseActivityScreen extends React.Component {
                     data={data}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({item}) => (
-                        <CardActivity image={item.icon} title={item.text}/>
+                        <CardActivity onPress={()=>this._handleOnPressCardActivity()} image={item.icon} title={item.text}/>
                     )}
             />
 
