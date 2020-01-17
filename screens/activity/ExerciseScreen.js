@@ -70,6 +70,7 @@ class ExerciseScreen extends React.Component {
             currentExerciseIsFinish: false,
             isUserSelectedResponse: false,
             userResponse: [],
+            score: 0
         };
         this._handleOnPressResponse = this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
@@ -272,8 +273,22 @@ class ExerciseScreen extends React.Component {
         );
     }
 
+    _scoringCalcule(){
+        if(this.state.currentExerciseIsFinish && this.state.isSuccessCurrentExercise){
+            this.setState(
+                {
+                    score: this.state.score+1
+                }
+            )
+        }
+    }
+
     _handleOnPressFinishButton() {
         this.setState({isLoading: true});
+        this._scoringCalcule();
+        if((this.state.currentIndex + 1) >= this.state.numberExercise){
+            console.log(this.props)
+        }
         let currentExercise = ExoData[this.state.currentIndex + 1];
         //console.log(currentExercise);
         let currentExerciseType = currentExercise.typeExercice;

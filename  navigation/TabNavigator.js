@@ -8,6 +8,8 @@ import {Ionicons, MaterialCommunityIcons,FontAwesome } from '@expo/vector-icons'
 import UserManualScreen from "../screens/UserManualScreen";
 import {createStackNavigator} from "react-navigation-stack";
 import ChooseActivityScreen from "../screens/activity/ChooseActivityScreen";
+import ExerciseScreen from "../screens/activity/ExerciseScreen";
+import ExerciseResultScreen from "../screens/activity/ExerciseResultScreen";
 
 const ChooseActivityStackNavigator = createStackNavigator({
     ChooseActivityTheme: {
@@ -24,6 +26,28 @@ const ChooseActivityStackNavigator = createStackNavigator({
     },
 
 });
+
+const ExerciseStackNavigator= createStackNavigator({
+    ChooseActivityTheme: {
+        screen: ChooseActivityStackNavigator
+    },
+    Exercise: {
+        screen: ExerciseScreen,
+        navigationOptions: {
+            title: 'Exercice',
+        }
+    },
+    ExerciseResult: {
+        screen: ExerciseResultScreen,
+        navigationOptions: {
+            title: 'Résultat',
+        }
+    },
+} , {
+    mode: 'modal', headerMode: 'none',
+}
+
+);
 
 const TabNavigator = createBottomTabNavigator(
 
