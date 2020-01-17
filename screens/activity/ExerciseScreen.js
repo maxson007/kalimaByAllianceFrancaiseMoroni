@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     FlatList
 } from "react-native";
-import {ProgressBar, Divider} from 'react-native-paper';
+import {ProgressBar, Divider,Title} from 'react-native-paper';
 import {MaterialIcons} from '@expo/vector-icons';
 import CheckButton from "../../components/CheckButton";
 import FinishButton from "../../components/FinishButton";
@@ -30,7 +30,7 @@ const ExoData = [
         reponseExercice: 'Wami mtru baba'
     },
 
-    {
+/*    {
         identifier: 1,
         typeExercice: 'chooseExactTranslation',
         enonceExercice: 'Choisis la traduction exacte',
@@ -51,7 +51,7 @@ const ExoData = [
         enonceExercice: 'Tape sur les paires',
         listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
         listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
-    },
+    },*/
 ];
 
 
@@ -71,7 +71,8 @@ class ExerciseScreen extends React.Component {
             currentExerciseIsFinish: false,
             isUserSelectedResponse: false,
             userResponse: [],
-            score: 0
+            score: 0,
+            isFinishActivity:false
         };
         this._handleOnPressResponse = this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
@@ -88,7 +89,7 @@ class ExerciseScreen extends React.Component {
         // console.log(currentExercise);
         let currentExerciseType = currentExercise.typeExercice;
         let numberExercise = ExoData.length;
-        let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
+        let progressBarValue =0;// (this.state.currentIndex + 1) / numberExercise;
         //console.log(currentExercise.listeProposition);
         //  console.log(this.state);
         this.setState({
@@ -211,6 +212,7 @@ class ExerciseScreen extends React.Component {
     }
 
     _renderExercise() {
+        if(this.state.isFinishActivity) return this._renderFinishActivity();
         if (this.state.currentExercise == null) return null;
         if (this.state.currentExerciseType === "chooseExactTranslation")
             return (
@@ -257,6 +259,7 @@ class ExerciseScreen extends React.Component {
     }
 
     _renderCheckOrFinishButton() {
+        if(!this.state.isFinishActivity){
         if (!this.state.currentExerciseIsFinish)
             return (
                 <CheckButton onPress={() => this._handleOnPressCheckButton()}
@@ -276,6 +279,7 @@ class ExerciseScreen extends React.Component {
             </Fragment>
 
         );
+        }
     }
 
     _scoringCalcule(){
@@ -294,15 +298,18 @@ class ExerciseScreen extends React.Component {
         let numberExercise = ExoData.length;
         let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
         if((this.state.currentIndex + 1) >= this.state.numberExercise){
-            console.log()
-            this.props.navigation.navigate('ExerciseResult', {progressBarValue: progressBarValue, score:this.state.score})
+            this.setState({
+                progressBarValue,
+                isLoading: false,
+                isFinishActivity: true
+            });
+            //this.props.navigation.navigate('ExerciseResult', {progressBarValue: progressBarValue, score:this.state.score})
             return;
         }
         let currentExercise = ExoData[this.state.currentIndex + 1];
         //console.log(currentExercise);
         let currentExerciseType = currentExercise.typeExercice;
 
-        console.log(progressBarValue);
         this.setState(
             {
                 currentExercise,
@@ -320,6 +327,16 @@ class ExerciseScreen extends React.Component {
         )
     }
 
+    _renderFinishActivity(){
+        return (
+            <View style={styles.finishActivityView}>
+                <Title>Activité terminée</Title>
+                <Text>
+                    Vous avez obtenu la note : <Text> {this.state.score}/{this.state.numberExercise} </Text>
+                </Text>
+            </View>
+        )
+    }
     render() {
         return (
             <SafeAreaView style={styles.container}>
@@ -336,7 +353,6 @@ class ExerciseScreen extends React.Component {
                 </View>
 
                 {this._renderExercise()}
-
                 <View style={{
                     width: '100%',
                     alignSelf: 'center',
@@ -376,7 +392,10 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '400',
     },
-
+    finishActivityView: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     loading_container: {
         position: 'absolute',
         left: 0,

@@ -1,5 +1,5 @@
 import React from 'react'
-import {SafeAreaView, StyleSheet, View, Text, Image, TouchableOpacity, FlatList} from "react-native";
+import {SafeAreaView, StyleSheet, View, Text, Image, TouchableOpacity, FlatList, Platform} from "react-native";
 import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
 import {Ionicons, MaterialCommunityIcons, FontAwesome, EvilIcons} from '@expo/vector-icons';
 import CardActivity from "../../components/CardActivity";
@@ -41,8 +41,8 @@ class ChooseActivityScreen extends React.Component {
             },
         ];
         return (
-            <SafeAreaView>
-                <FlatList
+            <SafeAreaView style={styles.container}>
+                <FlatList style={{ marginTop: Platform.OS === 'ios' ? 10 : 40}}
                     data={data}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({item}) => (
@@ -55,5 +55,9 @@ class ChooseActivityScreen extends React.Component {
         ;
     }
 }
-
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+});
 export default ChooseActivityScreen;

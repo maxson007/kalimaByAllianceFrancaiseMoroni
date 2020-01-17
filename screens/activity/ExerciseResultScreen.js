@@ -38,7 +38,7 @@ class ExerciseResultScreen extends React.Component {
                     </View>
                     <View style={{alignSelf: 'center'}}>
                         <Text>
-                            Votre note est de :  {this.props.navigation.state.params.score}
+                            Vous avez obtenu la note :  {this.props.navigation.state.params.score}
                         </Text>
                     </View>
             </SafeAreaView>
