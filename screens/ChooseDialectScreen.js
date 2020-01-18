@@ -7,10 +7,16 @@ class ChooseDialectScreen extends Component {
     constructor(props) {
         super(props);
     }
-    static navigationOptions = {
-        header: null,
-        mode: 'modal'
-    };
+
+    _addSurveyResponse(dialectToLearn) {
+        const surveyResponse= this.props.navigation.state.params.surveyResponse;
+        surveyResponse.dialectToLearn=dialectToLearn;
+        console.log(surveyResponse);
+       // const action = { type: "ADD_SURVEY_RESPONSE", value: surveyResponse };
+        this.props.navigation.navigate('WhyLearning',{surveyResponse});
+    }
+
+
     render() {
         return (
             <SafeAreaView style={styles.container}>
@@ -20,16 +26,16 @@ class ChooseDialectScreen extends Component {
                     </Text>
                 </View>
                 <View style={styles.buttonView}>
-                    <ButtonWithFlag onPress={() => this.props.navigation.navigate('WhyLearning')}
+                    <ButtonWithFlag onPress={() => this._addSurveyResponse("Anjouanais")}
                                     imageFlagUri={require('../assets/images/flags/Flag_of_Anjouan.png')}
                                     title="Anjouanais"/>
-                    <ButtonWithFlag onPress={() => this.props.navigation.navigate('WhyLearning')}
+                    <ButtonWithFlag onPress={() => this._addSurveyResponse("Mohélien")}
                                     imageFlagUri={require('../assets/images/flags/Flag_of_Mohéli.png')}
                                     title="Mohélien"/>
-                    <ButtonWithFlag onPress={() => this.props.navigation.navigate('WhyLearning')}
+                    <ButtonWithFlag onPress={() => this._addSurveyResponse("Mahorais")}
                                     imageFlagUri={require('../assets/images/flags/Flag_of_Mayotte.png')}
                                     title="Mahorais"/>
-                    <ButtonWithFlag onPress={() => this.props.navigation.navigate('WhyLearning')}
+                    <ButtonWithFlag onPress={() => this._addSurveyResponse("Grand-comorien")}
                                     imageFlagUri={require('../assets/images/flags/Flag_of_Grande_Comore.png')}
                                     titleStyle={{fontSize: 20, color: "#db002e"}} title="Grd-comorien"/>
                 </View>

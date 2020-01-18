@@ -11,17 +11,6 @@ import ChooseActivityScreen from "../screens/activity/ChooseActivityScreen";
 import ExerciseScreen from "../screens/activity/ExerciseScreen";
 
 
-const ExerciseStackNavigator = createStackNavigator({
-        Exercise: {
-            screen: ExerciseScreen,
-            navigationOptions: {
-                title: 'Exercice',
-            }
-        }
-    }, {
-        mode: 'modal', headerMode: 'none',
-    }
-);
 
 const ChooseActivityStackNavigator = createStackNavigator({
         ChooseActivityTheme: {
@@ -36,9 +25,12 @@ const ChooseActivityStackNavigator = createStackNavigator({
                 title: 'Activités',
             }
         },
-        ExerciseStack: {
-            screen: ExerciseStackNavigator,
-        },
+    ExerciseScreen: {
+        screen: ExerciseScreen,
+        navigationOptions: {
+            title: 'Exercice',
+        }
+    }
 
     }, {
         mode: 'modal', headerMode: 'none',
@@ -51,7 +43,7 @@ ActivityContainer.navigationOptions = ({ navigation }) => {
     let { routeName } = navigation.state.routes[navigation.state.index];
     let navigationOptions = {};
 
-    if (routeName === 'ExerciseStack') {
+    if (routeName === 'ExerciseScreen') {
         navigationOptions.tabBarVisible = false;
     }
 

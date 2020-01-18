@@ -17,8 +17,7 @@ class ChooseActivityScreen extends React.Component {
     };
 
     _handleOnPressCardActivity(){
-        console.log( "=============>TEST<===============")
-        this.props.navigation.navigate('ExerciseStack');
+        this.props.navigation.navigate('ExerciseScreen');
     }
 
     render() {

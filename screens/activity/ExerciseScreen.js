@@ -21,37 +21,37 @@ import PairsTranslationExercise from "../../components/PairsTranslationExercise"
 const ExoData = [
 
 
-    {
-        identifier: 3,
-        typeExercice: 'translatesSentence',
-        enonceExercice: 'Traduis cette phrase. ',
-        phraseTraduire: 'Je suis un garcon',
-        listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-        reponseExercice: 'Wami mtru baba'
-    },
+        {
+            identifier: 3,
+            typeExercice: 'translatesSentence',
+            enonceExercice: 'Traduis cette phrase. ',
+            phraseTraduire: 'Je suis un garcon',
+            listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+            reponseExercice: 'Wami mtru baba'
+        },
 
-/*    {
-        identifier: 1,
-        typeExercice: 'chooseExactTranslation',
-        enonceExercice: 'Choisis la traduction exacte',
-        phraseTraduire: 'Je suis une fille',
-        listeProposition: ['Wami mtru mama', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
-        reponseExercice: 'Wami mtru mama'
-    },
-    {
-        identifier: 2,
-        typeExercice: 'chooseExactTranslation',
-        enonceExercice: 'Choisis la traduction exacte',
-        phraseTraduire: 'Je suis un garcon',
-        listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
-        reponseExercice: 'Wami mtru baba'
-    }   , {
-        identifier: 4,
-        typeExercice: 'traductionPaires',
-        enonceExercice: 'Tape sur les paires',
-        listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-        listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
-    },*/
+        {
+            identifier: 1,
+            typeExercice: 'chooseExactTranslation',
+            enonceExercice: 'Choisis la traduction exacte',
+            phraseTraduire: 'Je suis une fille',
+            listeProposition: ['Wami mtru mama', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
+            reponseExercice: 'Wami mtru mama'
+        },
+        {
+            identifier: 2,
+            typeExercice: 'chooseExactTranslation',
+            enonceExercice: 'Choisis la traduction exacte',
+            phraseTraduire: 'Je suis un garcon',
+            listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
+            reponseExercice: 'Wami mtru baba'
+        }   , {
+            identifier: 4,
+            typeExercice: 'traductionPaires',
+            enonceExercice: 'Tape sur les paires',
+            listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+            listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
+        }
 ];
 
 
@@ -360,7 +360,7 @@ class ExerciseScreen extends React.Component {
             <SafeAreaView style={styles.container}>
                 <View style={{width: '95%', alignSelf: 'center', flexDirection: 'row'}}>
                     <View style={{width: '10%', alignSelf: 'center'}}>
-                        <TouchableOpacity onPress={() => alert("close")}>
+                        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                             <MaterialIcons name="close" size={40} color="red"/>
                         </TouchableOpacity>
                     </View>

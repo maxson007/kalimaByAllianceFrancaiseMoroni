@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Store/Reducers/surveyReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Store/configureStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ navigation/TabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/ navigation/TabNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseResultScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ChoiceLanguageScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChoiceLanguageScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ChooseDialectScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChooseDialectScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/WhyLearningScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/WhyLearningScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/activity/ChooseActivityScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ChooseActivityScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +56,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
@@ -103,7 +111,8 @@
       <workItem from="1579001534890" duration="6885000" />
       <workItem from="1579028172576" duration="42112000" />
       <workItem from="1579209147390" duration="13881000" />
-      <workItem from="1579344524631" duration="2334000" />
+      <workItem from="1579344524631" duration="2976000" />
+      <workItem from="1579352777973" duration="9159000" />
     </task>
     <servers />
   </component>
@@ -119,18 +128,19 @@
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="515" y="194" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1579348057895" />
-    <state x="270" y="48" key="SettingsEditor" timestamp="1578091980678">
+    <state x="270" y="48" key="SettingsEditor" timestamp="1579352825872">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
-    <state x="270" y="48" key="SettingsEditor/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1578091980678" />
+    <state x="270" y="48" key="SettingsEditor/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1579352825872" />
     <state width="625" height="500" key="SwitcherDM" timestamp="1579090209712">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state width="625" height="500" key="SwitcherDM/0.23.1680.947@0.23.1680.947" timestamp="1579090209712" />
-    <state x="695" y="27" width="789" height="839" key="find.popup" timestamp="1579292872696">
+    <state x="695" y="27" width="789" height="839" key="find.popup" timestamp="1579376149244">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="-1126" y="28" width="789" height="936" key="find.popup/-1920.23.1920.1057/0.23.1680.947@-1920.23.1920.1057" timestamp="1578165024889" />
+    <state x="695" y="27" width="789" height="839" key="find.popup/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1579376149244" />
     <state x="695" y="27" width="789" height="839" key="find.popup/0.23.1680.947@0.23.1680.947" timestamp="1579292872696" />
     <state width="750" height="540" key="javadoc.popup" timestamp="1578821914008">
       <screen x="-1920" y="23" width="1920" height="1057" />

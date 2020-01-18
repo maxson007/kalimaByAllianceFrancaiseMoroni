@@ -14,6 +14,8 @@ import KalimaSplashScreen from './screens/KalimaSplashScreen';
 import AppNavigator from "./ navigation/AppNavigator";
 import ChooseActivityScreen from "./screens/activity/ChooseActivityScreen";
 import ExerciseScreen from "./screens/activity/ExerciseScreen";
+import { Provider } from 'react-redux'
+import Store from './Store/configureStore'
 
 export default class App extends React.Component {
     constructor(props) {
@@ -41,8 +43,9 @@ export default class App extends React.Component {
             )
         }
         return (
-
-            <AppNavigator/>
+            <Provider store={Store}>
+                <AppNavigator/>
+            </Provider>
         );
     }
 

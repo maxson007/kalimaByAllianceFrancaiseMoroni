@@ -1,20 +1,32 @@
 import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image,FlatList,TouchableOpacity} from 'react-native';
+import {connect} from "react-redux";
 
 class WhyLearningScreen extends React.Component{
 
     constructor(props) {
         super(props);
+        this.state = {
+            surveyResponse: {
+                languageToLearn: null,
+                dialectToLearn: null,
+                whyLearnLanguage: null
+            }
+        }
+        this._addSurveyResponse = this._addSurveyResponse.bind(this)
 
     }
 
 
-    static navigationOptions = {
-         header: null,
-        mode: 'modal',
-        headerMode: 'none',
-    };
-
+    _addSurveyResponse(whyLearnLanguage) {
+        const surveyResponse= this.props.navigation.state.params.surveyResponse;
+        surveyResponse.whyLearnLanguage=whyLearnLanguage;
+        this.setState(surveyResponse);
+        console.log(surveyResponse);
+        const action = { type: "ADD_SURVEY_RESPONSE", value: surveyResponse };
+        this.props.dispatch(action);
+        this.props.navigation.navigate('AppTabNavigator');
+    }
     render() {
 
         const data = [
@@ -55,7 +67,7 @@ class WhyLearningScreen extends React.Component{
                         numColumns={2}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({item}) => (
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('AppTabNavigator')} style={{
+                            <TouchableOpacity onPress={() => this._addSurveyResponse(item.text)} style={{
                                 flex: 1,
                                 flexDirection: 'column',
                                 margin: 15,
@@ -112,4 +124,10 @@ const styles = StyleSheet.create({
         paddingTop: 40,
     },
 });
- export default WhyLearningScreen;
+
+const mapStateToProps = (state) => {
+    return {
+        surveyResponse: state.surveyResponse
+    }
+};
+export default connect(mapStateToProps)(WhyLearningScreen)
