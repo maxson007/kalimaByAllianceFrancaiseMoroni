@@ -77,6 +77,7 @@ class ExerciseScreen extends React.Component {
         this._handleOnPressResponse = this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
         this._handleOnPressPairs = this._handleOnPressPairs.bind(this);
+        this._handleOnPressCancelSelectedElement=this._handleOnPressCancelSelectedElement.bind(this)
     }
     static navigationOptions = {
         header: null,
@@ -110,6 +111,22 @@ class ExerciseScreen extends React.Component {
                 </View>
             )
         }
+    }
+    _handleOnPressCancelSelectedElement(item){
+        console.log(item)
+        let listeResponse =  this.state.userResponse;
+        let currentExercise = this.state.currentExercise;
+        let listeProposition = currentExercise.listeProposition;
+        let index = listeResponse.indexOf(item);
+        let removed = listeResponse.splice(index, 1);
+         listeProposition.push(item);
+        currentExercise.listeProposition=listeProposition
+        this.setState(
+             {
+                 currentExercise,
+                 listeResponse
+             }
+         )
     }
 
     _handleOnPressResponse(item) {
@@ -230,6 +247,7 @@ class ExerciseScreen extends React.Component {
                     handleOnPressResponse={this._handleOnPressResponse}
                     isUserSelectedResponse={this.state.isUserSelectedResponse}
                     handleOnPressCheckButton={this._handleOnPressCheckButton}
+                    handleOnPressCancelSelectedElement={this._handleOnPressCancelSelectedElement}
                     userResponse={this.state.userResponse}
                 />
             );

@@ -9,7 +9,6 @@ import UserManualScreen from "../screens/UserManualScreen";
 import {createStackNavigator} from "react-navigation-stack";
 import ChooseActivityScreen from "../screens/activity/ChooseActivityScreen";
 import ExerciseScreen from "../screens/activity/ExerciseScreen";
-import ExerciseResultScreen from "../screens/activity/ExerciseResultScreen";
 
 
 const ExerciseStackNavigator = createStackNavigator({
@@ -18,13 +17,7 @@ const ExerciseStackNavigator = createStackNavigator({
             navigationOptions: {
                 title: 'Exercice',
             }
-        },
-        ExerciseResult: {
-            screen: ExerciseResultScreen,
-            navigationOptions: {
-                title: 'Résultat',
-            }
-        },
+        }
     }, {
         mode: 'modal', headerMode: 'none',
     }

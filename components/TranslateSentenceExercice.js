@@ -17,6 +17,7 @@ class TranslateSentenceExercise extends React.Component {
 
         this._handleOnPressResponse = this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
+        this._handleOnPressCancelSelectedElement=this._handleOnPressCancelSelectedElement.bind(this);
     }
 
 
@@ -24,8 +25,10 @@ class TranslateSentenceExercise extends React.Component {
         this.props.handleOnPressResponse(item);
     }
 
+
+    _handleOnPressCancelSelectedElement(selected) {  this.props.handleOnPressCancelSelectedElement(selected)}
     _handleOnPressCheckButton() {
-        this.props._handleOnPressCheckButton();
+        this.props.handleOnPressCheckButton();
     }
 
     _renderResponseProposition() {
@@ -55,7 +58,7 @@ class TranslateSentenceExercise extends React.Component {
             )
     }
 
-    _renderResponseView() {
+    _renderResponseView(){
         let wordArray = this.props.userResponse;
         //console.log(wordArray);
         if(wordArray==null)return;
@@ -73,8 +76,8 @@ class TranslateSentenceExercise extends React.Component {
                 <View style={{flexDirection: 'row', width: '95%', height: 60}}>
                     {
                         part1.map(
-                            function (value) {
-                                return <WordToSelect word={value}/>;
+                            value=> {
+                                return <WordToSelect onPress={()=>this._handleOnPressCancelSelectedElement(value)}  word={value}/>;
                             }
                         )
                     }
@@ -83,8 +86,8 @@ class TranslateSentenceExercise extends React.Component {
                 <View style={{flexDirection: 'row', width: '95%', height: 60}}>
                     {
                         part2.map(
-                            function (value) {
-                                return <WordToSelect word={value}/>;
+                            value=> {
+                                return <WordToSelect onPress={()=>this._handleOnPressCancelSelectedElement(value)}  word={value}/>;
                             }
                         )
                     }

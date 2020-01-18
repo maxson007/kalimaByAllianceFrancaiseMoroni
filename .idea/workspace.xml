@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ navigation/TabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/ navigation/TabNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ChoiceLanguageScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChoiceLanguageScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ChooseDialectScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChooseDialectScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/WhyLearningScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/WhyLearningScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseResultScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +103,7 @@
       <workItem from="1579001534890" duration="6885000" />
       <workItem from="1579028172576" duration="42112000" />
       <workItem from="1579209147390" duration="13881000" />
-      <workItem from="1579344524631" duration="617000" />
+      <workItem from="1579344524631" duration="2334000" />
     </task>
     <servers />
   </component>
@@ -115,6 +115,10 @@
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
     <state x="-1267" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.23.1920.1057/0.23.1680.947@-1920.23.1920.1057" timestamp="1578924478309" />
+    <state x="515" y="194" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579348057895">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="515" y="194" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1579348057895" />
     <state x="270" y="48" key="SettingsEditor" timestamp="1578091980678">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
