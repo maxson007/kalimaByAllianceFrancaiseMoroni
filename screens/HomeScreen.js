@@ -33,7 +33,7 @@ class HomeScreen extends React.Component {
                     <ButtonPrimary style={styles.button} title="J’ai déjà un compte"/>
                 </View>
                 <View style={styles.imageLogoView}>
-                    <Image source={require('../assets/logos/logoalliance.png')}/>
+                    <Image style={{width:200,resizeMode: 'contain'}} source={require('../assets/logos/logoalliance.png')}/>
                 </View>
             </SafeAreaView>
         )
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     imageLogoView:{
         flex: 1,
         alignItems: 'center',
+        width:'100%'
     }
 });
 

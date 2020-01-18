@@ -68,7 +68,7 @@ class WhyLearningScreen extends React.Component{
                     />
                 </View>
                 <View style={styles.imageLogoView}>
-                    <Image source={require('../assets/logos/logoalliance.png')}/>
+                    <Image style={{width:200,resizeMode: 'contain'}} source={require('../assets/logos/logoalliance.png')}/>
                 </View>
             </SafeAreaView>
         )
