@@ -12,8 +12,6 @@ export default class TranslationScreen extends React.Component {
         title: 'Traduction'
     };
     render() {
-
-
         return (
             <SafeAreaView style={styles.container}>
                 <View style={{width: '100%', marginTop: Platform.OS === 'ios' ? 20 : 40}}>

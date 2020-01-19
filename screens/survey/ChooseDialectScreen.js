@@ -9,15 +9,12 @@ class ChooseDialectScreen extends Component {
     }
 
     _addSurveyResponse(dialectToLearn) {
-        const surveyResponse= this.props.navigation.state.params.surveyResponse;
+        const surveyResponse = this.props.surveyResponse;
         surveyResponse.dialectToLearn=dialectToLearn;
-        this.props.navigation.navigate('WhyLearning',{surveyResponse});
+        this.props.addSurveyResponse(surveyResponse);
     }
     static navigationOptions = {
-        //header: null,
-        headerShown: false,
-        //mode: 'modal',
-        //  headerMode: 'none',
+        headerShown: false
     };
 
     render() {

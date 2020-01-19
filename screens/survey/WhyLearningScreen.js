@@ -8,30 +8,20 @@ class WhyLearningScreen extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-            isCompleted: false,
-            surveyResponse: {
-                languageToLearn: null,
-                dialectToLearn: null,
-                whyLearnLanguage: null
-            }
-        }
-        this._addSurveyResponse = this._addSurveyResponse.bind(this)
+       // this._addSurveyResponse = this._addSurveyResponse.bind(this)
 
     }
     static navigationOptions = {
-        //header: null,
-        //mode: 'modal',
         headerShown: false,
-        //  headerMode: 'none',
     };
 
     _addSurveyResponse(whyLearnLanguage) {
-        const surveyResponse= this.props.navigation.state.params.surveyResponse;
+        const surveyResponse = this.props.surveyResponse;
         surveyResponse.whyLearnLanguage=whyLearnLanguage;
-        this.setState({surveyResponse, isCompleted:true});
-        const action = { type: ADD_SURVEY_RESPONSE, value: surveyResponse };
-        this.props.dispatch(action);
+        this.props.addSurveyResponse(surveyResponse);
+        //this.setState({surveyResponse, isCompleted:true});
+        //const action = { type: ADD_SURVEY_RESPONSE, value: surveyResponse };
+        //this.props.dispatch(action);
     }
     render() {
 
@@ -61,7 +51,6 @@ class WhyLearningScreen extends React.Component{
                 text: 'Autres'
             }
         ];
-        if(this.state.isCompleted) return (<TabNavigator/>);
         return (
             <SafeAreaView style={styles.container}>
                 <View style={styles.textViewPourquoiApprends}>

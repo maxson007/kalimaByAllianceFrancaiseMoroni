@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ navigation/AppNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ navigation/TabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/ navigation/TabNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/TranslationScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TranslationScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/survey/ChoiceLanguageScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/survey/ChoiceLanguageScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/survey/ChooseDialectScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/survey/ChooseDialectScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/survey/WhyLearningScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/survey/WhyLearningScreen.js" afterDir="false" />
@@ -105,7 +109,7 @@
       <workItem from="1579028172576" duration="42112000" />
       <workItem from="1579209147390" duration="13881000" />
       <workItem from="1579344524631" duration="2976000" />
-      <workItem from="1579352777973" duration="18701000" />
+      <workItem from="1579352777973" duration="26028000" />
     </task>
     <servers />
   </component>
@@ -117,10 +121,11 @@
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
     <state x="-1267" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.23.1920.1057/0.23.1680.947@-1920.23.1920.1057" timestamp="1578924478309" />
-    <state x="515" y="194" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579348057895">
+    <state x="515" y="194" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579451288675">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="515" y="194" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1057/0.23.1680.947@0.23.1680.947" timestamp="1579348057895" />
+    <state x="515" y="194" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.947@0.23.1680.947" timestamp="1579451288675" />
     <state x="270" y="48" key="SettingsEditor" timestamp="1579352825872">
       <screen x="0" y="23" width="1680" height="947" />
     </state>

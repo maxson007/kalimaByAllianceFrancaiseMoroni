@@ -11,7 +11,6 @@ import ChooseActivityScreen from "../screens/activity/ChooseActivityScreen";
 import ExerciseScreen from "../screens/activity/ExerciseScreen";
 
 
-
 const ChooseActivityStackNavigator = createStackNavigator({
         ChooseActivityTheme: {
             screen: ChooseActivityThemeScreen,
@@ -25,12 +24,12 @@ const ChooseActivityStackNavigator = createStackNavigator({
                 title: 'Activités',
             }
         },
-    ExerciseScreen: {
-        screen: ExerciseScreen,
-        navigationOptions: {
-            title: 'Exercice',
+        ExerciseScreen: {
+            screen: ExerciseScreen,
+            navigationOptions: {
+                title: 'Exercice',
+            }
         }
-    }
 
     },/* {
         mode: 'modal', headerMode: 'none',
@@ -39,8 +38,8 @@ const ChooseActivityStackNavigator = createStackNavigator({
 
 
 const ActivityContainer = createAppContainer(ChooseActivityStackNavigator);
-ActivityContainer.navigationOptions = ({ navigation }) => {
-    let { routeName } = navigation.state.routes[navigation.state.index];
+ActivityContainer.navigationOptions = ({navigation}) => {
+    let {routeName} = navigation.state.routes[navigation.state.index];
     let navigationOptions = {};
 
     if (routeName === 'ExerciseScreen') {
@@ -91,7 +90,6 @@ const TabNavigator = createBottomTabNavigator(
         },
 
     },
-
 );
 
 export default createAppContainer(TabNavigator);

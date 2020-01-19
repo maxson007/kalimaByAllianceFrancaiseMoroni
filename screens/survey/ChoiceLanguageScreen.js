@@ -7,17 +7,13 @@ class ChoiceLanguageScreen extends Component {
         super(props);
     }
     static navigationOptions = {
-        header: null,
-        headerShown: false,
+        headerShown: false
     };
 
-    _addSurveyResponse(languageToLearn) {
-        const surveyResponse= {
-            languageToLearn,
-            dialectToLearn: null,
-            whyLearnLanguage: null
-        };
-        this.props.navigation.navigate('ChooseDialect',{surveyResponse});
+    _addSurveyResponseLanguageToLearn(languageToLearn) {
+        const surveyResponse = this.props.surveyResponse;
+        surveyResponse.languageToLearn = languageToLearn;
+        this.props.addSurveyResponse(surveyResponse);
     }
 
     render() {
@@ -31,11 +27,11 @@ class ChoiceLanguageScreen extends Component {
                 </View>
                 <View style={styles.buttonView}>
                     <ButtonWithFlag
-                        onPress={() =>this._addSurveyResponse("Le Comorien")}
+                        onPress={()=>this._addSurveyResponseLanguageToLearn("Le Comorien")}
                         imageFlagUri={require('../../assets/images/flags/comoresFlag.png')}
                         titleStyle={{fontSize: 20, color: "#db002e"}} title="Le Comorien"/>
                     <ButtonWithFlag
-                        onPress={() =>this._addSurveyResponse("Le Francais")}
+                        onPress={() =>this._addSurveyResponseLanguageToLearn("Le Francais")}
                         imageFlagUri={require('../../assets/images/flags/frenchFlag.png')}
                         titleStyle={{fontSize: 20, color: "#db002e"}} title="Le Francais"/>
                 </View>

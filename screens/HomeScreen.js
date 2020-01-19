@@ -5,19 +5,42 @@ import SplashAnimation from '../animations/SplashAnimation';
 import {connect} from "react-redux";
 import TabNavigator from "../ navigation/TabNavigator";
 import { enableScreens} from 'react-native-screens';
+import ChoiceLanguageScreen from "./survey/ChoiceLanguageScreen";
+import ChooseDialectScreen from "./survey/ChooseDialectScreen";
+import WhyLearningScreen from "./survey/WhyLearningScreen";
 enableScreens();
 class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
+        this.state={
+            startSurvey: false,
+            isCompletedSurvey: false,
+            surveyResponse: {
+                languageToLearn: null,
+                dialectToLearn: null,
+                whyLearnLanguage: null
+            }
+        };
+        this._addSurveyResponse=this._addSurveyResponse.bind(this)
     }
 
     static navigationOptions = {
-        header: null,
-        mode: 'modal',
-        //  headerMode: 'none',
+        headerShown: false
     };
-    _renderHomeView(){
 
+    _addSurveyResponse(surveyResponse) {
+        this.setState({surveyResponse});
+        if(this.state.surveyResponse.languageToLearn!==null &&
+            this.state.surveyResponse.dialectToLearn!==null &&
+            this.state.surveyResponse.whyLearnLanguage!==null){
+            this.setState({
+                startSurvey: false,
+                isCompletedSurvey: true,
+            })
+        }
+    }
+
+    _renderHomeView(){
             return (
                 <SafeAreaView style={styles.container}>
                     <View style={styles.textViewApprendsGratuitement}>
@@ -34,7 +57,7 @@ class HomeScreen extends React.Component {
                         </Text>
                     </View>
                     <View style={styles.buttonView}>
-                        <ButtonPrimary onPress={() => this.props.navigation.navigate('ChoiceLanguage')}
+                        <ButtonPrimary onPress={() => {this.setState({startSurvey: true})}}
                                        style={styles.button}
                                        title="Commencer"/>
                         <ButtonPrimary style={styles.button} title="J’ai déjà un compte"/>
@@ -50,6 +73,28 @@ class HomeScreen extends React.Component {
         if (this.props.surveyResponse.languageToLearn === null) {
             return this._renderHomeView()
         }
+        if(this.state.startSurvey){
+            if(this.state.surveyResponse.languageToLearn!==null && this.state.surveyResponse.dialectToLearn===null) {
+                return (
+                    <ChooseDialectScreen addSurveyResponse={this._addSurveyResponse} surveyResponse={this.state.surveyResponse}/>
+                )
+            }
+            if(this.state.surveyResponse.languageToLearn!==null &&
+                this.state.surveyResponse.dialectToLearn!==null &&
+                this.state.surveyResponse.whyLearnLanguage===null) {
+                return (
+                    <WhyLearningScreen addSurveyResponse={this._addSurveyResponse} surveyResponse={this.state.surveyResponse}/>
+                )
+            }
+            if(this.state.surveyResponse.languageToLearn===null &&
+                this.state.surveyResponse.dialectToLearn===null &&
+                this.state.surveyResponse.whyLearnLanguage===null){
+                return (
+                    <ChoiceLanguageScreen addSurveyResponse={this._addSurveyResponse} surveyResponse={this.state.surveyResponse} />
+                )
+            }
+        }
+
         return <TabNavigator/>
     }
 }
