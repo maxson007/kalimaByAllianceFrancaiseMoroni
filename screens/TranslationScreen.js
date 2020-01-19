@@ -8,9 +8,11 @@ export default class TranslationScreen extends React.Component {
             sourceLanguage: null
         }
     }
+
     static navigationOptions = {
         title: 'Traduction'
     };
+
     render() {
         return (
             <SafeAreaView style={styles.container}>
@@ -28,32 +30,10 @@ export default class TranslationScreen extends React.Component {
                         </TextInput>
                     </View>
                 </View>
-                <View style={{width:'100%',  alignItems:'center', marginBottom:10}}>
-                    <Picker
-                        selectedValue={this.state.language}
-                        mode='dropdown'
-                        style={{width: '80%', height:50, color: "#da002e",  marginTop: Platform.OS === 'ios' ?-5:0, marginBottom: Platform.OS === 'ios' ?20: 0 }}
-                        itemStyle={{color:'#da002e', height:100 }}
-                        onValueChange={(itemValue, itemIndex) =>
-                            this.setState({language: itemValue})
-                        }>
-                        <Picker.Item label="Anjouanais" value="anjouanais" />
-                        <Picker.Item label="Grand-Comorien" value="grand-comorien" />
-                        <Picker.Item label="Mahorais" value="mahorais" />
-                        <Picker.Item label="Mohélien" value="mohelien" />
-                    </Picker>
-                </View>
-                <View style={{alignItems:'center', margin: 20}}>
-                    <TouchableOpacity style={styles.button}>
-                        <View style={{ flex:1, flexDirection: 'row', alignItems: 'center'}}>
-                        <Text style={styles.buttonText}> Traduire </Text>
-                        <Image style={{marginLeft:10}} source={require('../assets/images/screens/translate/two-way-arrows.png')}/>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-                <View style={{width: '100%' }}>
+
+                <View style={{width: '100%', marginTop:40}}>
                     <Text style={{color: '#8C8D8F', fontSize: 20, fontWeight: '700', marginLeft: 41}}>
-                        Anjouanais
+                        Comoriens
                     </Text>
                     <View style={styles.textInputView}>
                         <TextInput
@@ -64,11 +44,21 @@ export default class TranslationScreen extends React.Component {
                         </TextInput>
                     </View>
                 </View>
-                <View style={{alignItems:'center', margin: 20}}>
+                <View style={{alignItems: 'center', marginTop: 40}}>
+                    <TouchableOpacity style={styles.button}>
+                        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+                            <Text style={styles.buttonText}> Traduire </Text>
+                            <Image style={{marginLeft: 10}}
+                                   source={require('../assets/images/screens/translate/two-way-arrows.png')}/>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={{alignItems: 'center', margin: 10}}>
                     <TouchableOpacity style={styles.buttonGrey}>
-                        <View style={{ flex:1, flexDirection: 'row', alignItems: 'center'}}>
+                        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={styles.buttonText}> Ecouter </Text>
-                            <Image style={{marginLeft:10}} source={require('../assets/images/screens/translate/audio-speaker-on.png')}/>
+                            <Image style={{marginLeft: 10, width:25}}  resizeMode="contain"
+                                   source={require('../assets/images/screens/translate/audio-speaker-on.png')}/>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -84,7 +74,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        margin:5,
+        margin: 5,
         justifyContent: 'center',
         alignItems: 'center',
         width: 281,
@@ -93,7 +83,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#da002e',
     },
     buttonGrey: {
-        margin:5,
+        margin: 5,
         justifyContent: 'center',
         alignItems: 'center',
         width: 281,
