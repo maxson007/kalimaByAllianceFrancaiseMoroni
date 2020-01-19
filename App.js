@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
-import ChoiceLanguageScreen from './screens/ChoiceLanguageScreen';
-import  ChooseDialectScreen from './screens/ChooseDialectScreen';
-import WhyLearningScreen from './screens/WhyLearningScreen';
+import ChoiceLanguageScreen from './screens/survey/ChoiceLanguageScreen';
+import  ChooseDialectScreen from './screens/survey/ChooseDialectScreen';
+import WhyLearningScreen from './screens/survey/WhyLearningScreen';
 import ChooseActivityThemeScreen from './screens/ChooseActivityThemeScreen';
 import TranslationScreen from './screens/TranslationScreen';
 import ProfileScreen from './screens/profile/ProfileScreen';

@@ -11,9 +11,9 @@ class ChooseActivityScreen extends React.Component {
         super(props);
     }
     static navigationOptions = {
-        header: null,
-        mode: 'modal',
-        headerMode: 'none',
+        //header: null,
+       // mode: 'modal',
+        //headerMode: 'none',
     };
 
     _handleOnPressCardActivity(){

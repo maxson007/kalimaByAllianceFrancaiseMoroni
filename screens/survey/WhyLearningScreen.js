@@ -1,13 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image,FlatList,TouchableOpacity} from 'react-native';
 import {connect} from "react-redux";
-import {ADD_SURVEY_RESPONSE} from '../constants/ActionTypes'
+import {ADD_SURVEY_RESPONSE} from '../../constants/ActionTypes'
+import TabNavigator from "../../ navigation/TabNavigator";
 
 class WhyLearningScreen extends React.Component{
 
     constructor(props) {
         super(props);
         this.state = {
+            isCompleted: false,
             surveyResponse: {
                 languageToLearn: null,
                 dialectToLearn: null,
@@ -17,45 +19,48 @@ class WhyLearningScreen extends React.Component{
         this._addSurveyResponse = this._addSurveyResponse.bind(this)
 
     }
-
+    static navigationOptions = {
+        header: null,
+        mode: 'modal',
+        //  headerMode: 'none',
+    };
 
     _addSurveyResponse(whyLearnLanguage) {
         const surveyResponse= this.props.navigation.state.params.surveyResponse;
         surveyResponse.whyLearnLanguage=whyLearnLanguage;
-        this.setState(surveyResponse);
+        this.setState({surveyResponse, isCompleted:true});
         const action = { type: ADD_SURVEY_RESPONSE, value: surveyResponse };
         this.props.dispatch(action);
-        this.props.navigation.navigate('AppTabNavigator');
     }
     render() {
 
         const data = [
             {
-                icon: require("../assets/images/screens/sac.png"),
+                icon: require("../../assets/images/screens/sac.png"),
                 text: 'Ecole'
             },
             {
-                icon: require("../assets/images/screens/travel.png"),
+                icon: require("../../assets/images/screens/travel.png"),
                 text: 'Voyages'
             },
             {
-                icon: require("../assets/images/screens/family.png"),
+                icon: require("../../assets/images/screens/family.png"),
                 text: 'Famille et amis'
             },
             {
-                icon: require("../assets/images/screens/museum.png"),
+                icon: require("../../assets/images/screens/museum.png"),
                 text: 'Culture'
             },
             {
-                icon: require("../assets/images/screens/salary.png"),
+                icon: require("../../assets/images/screens/salary.png"),
                 text: 'Opportunités'
             },
             {
-                icon: require("../assets/images/screens/chemistry.png"),
+                icon: require("../../assets/images/screens/chemistry.png"),
                 text: 'Autres'
             }
         ];
-
+        if(this.state.isCompleted) return (<TabNavigator/>);
         return (
             <SafeAreaView style={styles.container}>
                 <View style={styles.textViewPourquoiApprends}>
@@ -80,7 +85,7 @@ class WhyLearningScreen extends React.Component{
                     />
                 </View>
                 <View style={styles.imageLogoView}>
-                    <Image style={{width:200,resizeMode: 'contain'}} source={require('../assets/logos/logoalliance.png')}/>
+                    <Image style={{width:200,resizeMode: 'contain'}} source={require('../../assets/logos/logoalliance.png')}/>
                 </View>
             </SafeAreaView>
         )

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {SafeAreaView, StyleSheet, View, Text, Image} from "react-native";
-import ButtonWithFlag from "../components/ButtonWithFlag";
+import ButtonWithFlag from "../../components/ButtonWithFlag";
 
 class ChooseDialectScreen extends Component {
 
@@ -13,7 +13,11 @@ class ChooseDialectScreen extends Component {
         surveyResponse.dialectToLearn=dialectToLearn;
         this.props.navigation.navigate('WhyLearning',{surveyResponse});
     }
-
+    static navigationOptions = {
+        header: null,
+        mode: 'modal',
+        //  headerMode: 'none',
+    };
 
     render() {
         return (
@@ -25,20 +29,20 @@ class ChooseDialectScreen extends Component {
                 </View>
                 <View style={styles.buttonView}>
                     <ButtonWithFlag onPress={() => this._addSurveyResponse("Anjouanais")}
-                                    imageFlagUri={require('../assets/images/flags/Flag_of_Anjouan.png')}
+                                    imageFlagUri={require('../../assets/images/flags/Flag_of_Anjouan.png')}
                                     title="Anjouanais"/>
                     <ButtonWithFlag onPress={() => this._addSurveyResponse("Mohélien")}
-                                    imageFlagUri={require('../assets/images/flags/Flag_of_Mohéli.png')}
+                                    imageFlagUri={require('../../assets/images/flags/Flag_of_Mohéli.png')}
                                     title="Mohélien"/>
                     <ButtonWithFlag onPress={() => this._addSurveyResponse("Mahorais")}
-                                    imageFlagUri={require('../assets/images/flags/Flag_of_Mayotte.png')}
+                                    imageFlagUri={require('../../assets/images/flags/Flag_of_Mayotte.png')}
                                     title="Mahorais"/>
                     <ButtonWithFlag onPress={() => this._addSurveyResponse("Grand-comorien")}
-                                    imageFlagUri={require('../assets/images/flags/Flag_of_Grande_Comore.png')}
+                                    imageFlagUri={require('../../assets/images/flags/Flag_of_Grande_Comore.png')}
                                     titleStyle={{fontSize: 20, color: "#db002e"}} title="Grd-comorien"/>
                 </View>
                 <View style={styles.imageLogoView}>
-                    <Image style={{width:200,resizeMode: 'contain'}} source={require('../assets/logos/logoalliance.png')}/>
+                    <Image style={{width:200,resizeMode: 'contain'}} source={require('../../assets/logos/logoalliance.png')}/>
                 </View>
             </SafeAreaView>
         );

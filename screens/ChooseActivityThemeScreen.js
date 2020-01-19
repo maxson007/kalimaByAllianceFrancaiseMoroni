@@ -38,7 +38,7 @@ export default class ChooseActivityThemeScreen extends  React.Component{
 
     static navigationOptions = {
         title: 'Activité',
-        header: null,
+
     };
     render(){
 

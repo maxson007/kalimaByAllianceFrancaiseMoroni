@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {SafeAreaView, StyleSheet, View, Text, Image } from "react-native";
-import ButtonWithFlag from "../components/ButtonWithFlag";
+import ButtonWithFlag from "../../components/ButtonWithFlag";
 
 class ChoiceLanguageScreen extends Component {
     constructor(props) {
@@ -31,15 +31,15 @@ class ChoiceLanguageScreen extends Component {
                 <View style={styles.buttonView}>
                     <ButtonWithFlag
                         onPress={() =>this._addSurveyResponse("Le Comorien")}
-                        imageFlagUri={require('../assets/images/flags/comoresFlag.png')}
+                        imageFlagUri={require('../../assets/images/flags/comoresFlag.png')}
                         titleStyle={{fontSize: 20, color: "#db002e"}} title="Le Comorien"/>
                     <ButtonWithFlag
                         onPress={() =>this._addSurveyResponse("Le Francais")}
-                        imageFlagUri={require('../assets/images/flags/frenchFlag.png')}
+                        imageFlagUri={require('../../assets/images/flags/frenchFlag.png')}
                         titleStyle={{fontSize: 20, color: "#db002e"}} title="Le Francais"/>
                 </View>
                 <View style={styles.imageLogoView}>
-                    <Image style={{width:200,resizeMode: 'contain'}} source={require('../assets/logos/logoalliance.png')}/>
+                    <Image style={{width:200,resizeMode: 'contain'}} source={require('../../assets/logos/logoalliance.png')}/>
                 </View>
             </SafeAreaView>
         );
