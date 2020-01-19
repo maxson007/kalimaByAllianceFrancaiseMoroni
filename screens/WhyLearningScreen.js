@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image,FlatList,TouchableOpacity} from 'react-native';
 import {connect} from "react-redux";
+import {ADD_SURVEY_RESPONSE} from '../constants/ActionTypes'
 
 class WhyLearningScreen extends React.Component{
 
@@ -22,8 +23,7 @@ class WhyLearningScreen extends React.Component{
         const surveyResponse= this.props.navigation.state.params.surveyResponse;
         surveyResponse.whyLearnLanguage=whyLearnLanguage;
         this.setState(surveyResponse);
-        console.log(surveyResponse);
-        const action = { type: "ADD_SURVEY_RESPONSE", value: surveyResponse };
+        const action = { type: ADD_SURVEY_RESPONSE, value: surveyResponse };
         this.props.dispatch(action);
         this.props.navigation.navigate('AppTabNavigator');
     }

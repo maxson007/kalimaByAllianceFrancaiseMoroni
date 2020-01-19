@@ -15,59 +15,30 @@ import AppNavigator from "./ navigation/AppNavigator";
 import ChooseActivityScreen from "./screens/activity/ChooseActivityScreen";
 import ExerciseScreen from "./screens/activity/ExerciseScreen";
 import { Provider } from 'react-redux'
-import Store from './Store/configureStore'
+import  Store from './Store/configureStore';
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist';
+import { enableScreens } from 'react-native-screens';
+enableScreens();
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isSplashReady: false,
-            isAppReady: false,
-        };
     };
 
     render(){
-        if (!this.state.isSplashReady) {
-            return (
-                <AppLoading
-                    startAsync={this._cacheSplashResourcesAsync}
-                    onFinish={() => this.setState({ isSplashReady: true })}
-                    onError={console.warn}
-                    autoHideSplash={false}
-                />
-            );
-        }
-        if (!this.state.isAppReady) {
-            return (
-                <KalimaSplashScreen onLoad={this._cacheResourcesAsync}/>
-            )
-        }
+
+        let persistor = persistStore(Store);
+
         return (
             <Provider store={Store}>
-                <AppNavigator/>
+                <PersistGate loading={ <KalimaSplashScreen/>} persistor={persistor} >
+                  <AppNavigator/>
+                </PersistGate>
             </Provider>
         );
     }
 
-    _cacheSplashResourcesAsync = async () => {
-        const gif = require('./assets/splash.png');
-        return Asset.fromModule(gif).downloadAsync();
-    };
-
-    _cacheResourcesAsync = async () => {
-        SplashScreen.hide();
-        const images = [
-            require('./assets/logos/languageLogo.png'),
-            require('./assets/logos/kalimaLogo.png'),
-        ];
-
-        const cacheImages = images.map(image => {
-            return Asset.fromModule(image).downloadAsync();
-        });
-
-        await Promise.all(cacheImages);
-        this.setState({ isAppReady: true });
-    };
 }
 
 const styles = StyleSheet.create({

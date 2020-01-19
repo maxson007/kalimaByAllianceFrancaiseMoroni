@@ -4,17 +4,11 @@ import ButtonPrimary from '../components/ButtonPrimary';
 import SplashAnimation from '../animations/SplashAnimation';
 import {connect} from "react-redux";
 import TabNavigator from "../ navigation/TabNavigator";
-
+import { enableScreens} from 'react-native-screens';
+enableScreens();
 class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-                surveyResponse: {
-                    languageToLearn: null,
-                    dialectToLearn: null,
-                    whyLearnLanguage: null
-                }
-        }
     }
 
     static navigationOptions = {
@@ -53,10 +47,12 @@ class HomeScreen extends React.Component {
             );
     }
     render() {
-        if (this.state.surveyResponse.languageToLearn === null) {
-            return this._renderHomeView()
-        }
+        console.log(this.props.surveyResponse.languageToLearn);
 
+        if (this.props.surveyResponse.languageToLearn === null) {
+            return this._renderHomeView()
+
+        }
         return <TabNavigator/>
     }
 }

@@ -19,14 +19,14 @@ export default class KalimaSplashScreen extends Component {
                    // marginHorizontal: 40,
                 }}>
                 <SplashAnimation>
-                    <Image onLoad={this.props.onLoad}
+                    <Image
                         source={require('../assets/logos/languageLogo.png',
                         )}
                         style={{ width: 100 ,height:100, alignSelf: 'center'}}
                     />
                 </SplashAnimation>
                 <FadeIn>
-                    <Image onLoad={this.props.onLoad} style={{marginTop:-100}} source={ require('../assets/logos/kalimaLogo.png')}/>
+                    <Image style={{marginTop:-100}} source={ require('../assets/logos/kalimaLogo.png')}/>
                 </FadeIn>
 
             </View>

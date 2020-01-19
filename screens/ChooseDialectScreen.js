@@ -11,8 +11,6 @@ class ChooseDialectScreen extends Component {
     _addSurveyResponse(dialectToLearn) {
         const surveyResponse= this.props.navigation.state.params.surveyResponse;
         surveyResponse.dialectToLearn=dialectToLearn;
-        console.log(surveyResponse);
-       // const action = { type: "ADD_SURVEY_RESPONSE", value: surveyResponse };
         this.props.navigation.navigate('WhyLearning',{surveyResponse});
     }
 

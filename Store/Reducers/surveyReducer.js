@@ -1,18 +1,20 @@
-const initialState = {
-    surveyResponse: {
+import {ADD_SURVEY_RESPONSE} from '../../constants/ActionTypes'
+
+
+const initialState ={
         languageToLearn: null,
         dialectToLearn: null,
         whyLearnLanguage: null
-    }
-};
+    };
 
-function addSurveyResponse(state = initialState, action) {
-    let nextState
+
+function surveyReducer(state = initialState, action) {
+    let nextState;
     switch (action.type) {
-        case 'ADD_SURVEY_RESPONSE':
+        case ADD_SURVEY_RESPONSE:
                 nextState = {
                     ...state,
-                    surveyResponse: [...state.surveyResponse, action.value]
+                    surveyResponse:  action.value
                 }
 
             return nextState || state;
@@ -21,4 +23,4 @@ function addSurveyResponse(state = initialState, action) {
     }
 }
 
-export default addSurveyResponse
+export default surveyReducer
