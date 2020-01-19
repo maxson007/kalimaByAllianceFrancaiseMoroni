@@ -47,11 +47,8 @@ class HomeScreen extends React.Component {
             );
     }
     render() {
-        console.log(this.props.surveyResponse.languageToLearn);
-
         if (this.props.surveyResponse.languageToLearn === null) {
             return this._renderHomeView()
-
         }
         return <TabNavigator/>
     }

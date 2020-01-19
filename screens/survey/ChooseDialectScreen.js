@@ -14,8 +14,9 @@ class ChooseDialectScreen extends Component {
         this.props.navigation.navigate('WhyLearning',{surveyResponse});
     }
     static navigationOptions = {
-        header: null,
-        mode: 'modal',
+        //header: null,
+        headerShown: false,
+        //mode: 'modal',
         //  headerMode: 'none',
     };
 

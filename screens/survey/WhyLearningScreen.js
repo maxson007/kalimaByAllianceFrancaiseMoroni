@@ -20,8 +20,9 @@ class WhyLearningScreen extends React.Component{
 
     }
     static navigationOptions = {
-        header: null,
-        mode: 'modal',
+        //header: null,
+        //mode: 'modal',
+        headerShown: false,
         //  headerMode: 'none',
     };
 

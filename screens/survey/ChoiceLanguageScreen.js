@@ -8,6 +8,7 @@ class ChoiceLanguageScreen extends Component {
     }
     static navigationOptions = {
         header: null,
+        headerShown: false,
     };
 
     _addSurveyResponse(languageToLearn) {
