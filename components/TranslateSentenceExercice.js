@@ -76,8 +76,8 @@ class TranslateSentenceExercise extends React.Component {
                 <View style={{flexDirection: 'row', width: '95%', height: 60}}>
                     {
                         part1.map(
-                            value=> {
-                                return <WordToSelect onPress={()=>this._handleOnPressCancelSelectedElement(value)}  word={value}/>;
+                            (value, index)=> {
+                                return <WordToSelect key={index} onPress={()=>this._handleOnPressCancelSelectedElement(value)}  word={value}/>;
                             }
                         )
                     }
@@ -86,8 +86,8 @@ class TranslateSentenceExercise extends React.Component {
                 <View style={{flexDirection: 'row', width: '95%', height: 60}}>
                     {
                         part2.map(
-                            value=> {
-                                return <WordToSelect onPress={()=>this._handleOnPressCancelSelectedElement(value)}  word={value}/>;
+                            (value, index)=> {
+                                return <WordToSelect key={index} onPress={()=>this._handleOnPressCancelSelectedElement(value)}  word={value}/>;
                             }
                         )
                     }

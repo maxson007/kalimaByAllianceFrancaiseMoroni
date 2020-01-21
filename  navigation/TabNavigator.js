@@ -31,9 +31,7 @@ const ChooseActivityStackNavigator = createStackNavigator({
             }
         }
 
-    },/* {
-        mode: 'modal', headerMode: 'none',
-    }*/
+    }
 );
 
 

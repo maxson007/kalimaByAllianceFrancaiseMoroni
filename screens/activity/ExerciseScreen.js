@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     FlatList
 } from "react-native";
-import {ProgressBar, Divider,Title} from 'react-native-paper';
+import {ProgressBar, Divider, Title} from 'react-native-paper';
 import {MaterialIcons} from '@expo/vector-icons';
 import CheckButton from "../../components/CheckButton";
 import FinishButton from "../../components/FinishButton";
@@ -21,37 +21,37 @@ import PairsTranslationExercise from "../../components/PairsTranslationExercise"
 const ExoData = [
 
 
-        {
-            identifier: 3,
-            typeExercice: 'translatesSentence',
-            enonceExercice: 'Traduis cette phrase. ',
-            phraseTraduire: 'Je suis un garcon',
-            listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-            reponseExercice: 'Wami mtru baba'
-        },
+    {
+        identifier: 3,
+        typeExercice: 'translatesSentence',
+        enonceExercice: 'Traduis cette phrase. ',
+        phraseTraduire: 'Je suis un garcon',
+        listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+        reponseExercice: 'Wami mtru baba'
+    },
 
-        {
-            identifier: 1,
-            typeExercice: 'chooseExactTranslation',
-            enonceExercice: 'Choisis la traduction exacte',
-            phraseTraduire: 'Je suis une fille',
-            listeProposition: ['Wami mtru mama', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
-            reponseExercice: 'Wami mtru mama'
-        },
-        {
-            identifier: 2,
-            typeExercice: 'chooseExactTranslation',
-            enonceExercice: 'Choisis la traduction exacte',
-            phraseTraduire: 'Je suis un garcon',
-            listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
-            reponseExercice: 'Wami mtru baba'
-        }   , {
-            identifier: 4,
-            typeExercice: 'traductionPaires',
-            enonceExercice: 'Tape sur les paires',
-            listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
-            listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
-        }
+    {
+        identifier: 1,
+        typeExercice: 'chooseExactTranslation',
+        enonceExercice: 'Choisis la traduction exacte',
+        phraseTraduire: 'Je suis une fille',
+        listeProposition: ['Wami mtru mama', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
+        reponseExercice: 'Wami mtru mama'
+    },
+    {
+        identifier: 2,
+        typeExercice: 'chooseExactTranslation',
+        enonceExercice: 'Choisis la traduction exacte',
+        phraseTraduire: 'Je suis un garcon',
+        listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
+        reponseExercice: 'Wami mtru baba'
+    }, {
+        identifier: 4,
+        typeExercice: 'traductionPaires',
+        enonceExercice: 'Tape sur les paires',
+        listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
+        listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
+    }
 ];
 
 
@@ -72,27 +72,24 @@ class ExerciseScreen extends React.Component {
             isUserSelectedResponse: false,
             userResponse: [],
             score: 0,
-            isFinishActivity:false
+            isFinishActivity: false
         };
         this._handleOnPressResponse = this._handleOnPressResponse.bind(this);
         this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this);
         this._handleOnPressPairs = this._handleOnPressPairs.bind(this);
-        this._handleOnPressCancelSelectedElement=this._handleOnPressCancelSelectedElement.bind(this)
+        this._handleOnPressCancelSelectedElement = this._handleOnPressCancelSelectedElement.bind(this)
     }
+
     static navigationOptions = {
-        header: null,
-        mode: 'modal',
-        headerMode: 'none',
+        headerShown: false
     };
+
     componentDidMount() {
         this.setState({isLoading: true});
         let currentExercise = ExoData[this.state.currentIndex];
-        // console.log(currentExercise);
         let currentExerciseType = currentExercise.typeExercice;
         let numberExercise = ExoData.length;
-        let progressBarValue =0;// (this.state.currentIndex + 1) / numberExercise;
-        //console.log(currentExercise.listeProposition);
-        //  console.log(this.state);
+        let progressBarValue = 0;// (this.state.currentIndex + 1) / numberExercise;
         this.setState({
             currentExercise,
             numberExercise,
@@ -100,7 +97,10 @@ class ExerciseScreen extends React.Component {
             currentExerciseType,
             isLoading: false
         });
-        // this._handleOnPressCheckButton = this._handleOnPressCheckButton.bind(this)
+    }
+
+    onClose() {
+        this.props.navigation.pop();
     }
 
     _displayLoading() {
@@ -112,21 +112,21 @@ class ExerciseScreen extends React.Component {
             )
         }
     }
-    _handleOnPressCancelSelectedElement(item){
-        console.log(item)
-        let listeResponse =  this.state.userResponse;
+
+    _handleOnPressCancelSelectedElement(item) {
+        let listeResponse = this.state.userResponse;
         let currentExercise = this.state.currentExercise;
         let listeProposition = currentExercise.listeProposition;
         let index = listeResponse.indexOf(item);
         let removed = listeResponse.splice(index, 1);
-         listeProposition.push(item);
-        currentExercise.listeProposition=listeProposition
+        listeProposition.push(item);
+        currentExercise.listeProposition = listeProposition;
         this.setState(
-             {
-                 currentExercise,
-                 listeResponse
-             }
-         )
+            {
+                currentExercise,
+                userResponse: listeResponse
+            }
+        )
     }
 
     _handleOnPressResponse(item) {
@@ -173,10 +173,10 @@ class ExerciseScreen extends React.Component {
             userResponseTmp.push(item)
         }
         if (userResponseTmp.length < 2)
-        this.setState({
-            userResponse: userResponseTmp,
-            isUserSelectedResponse: true
-        });
+            this.setState({
+                userResponse: userResponseTmp,
+                isUserSelectedResponse: true
+            });
 
         if (userResponseTmp.length === 2) {
             let index1;
@@ -196,7 +196,7 @@ class ExerciseScreen extends React.Component {
                     this.setState({
                         currentExercise,
                         isSuccessCurrentExercise: true,
-                        currentExerciseIsFinish: listeMotComorien.length===0
+                        currentExerciseIsFinish: listeMotComorien.length === 0
                     });
                 } else {
                     this.setState({
@@ -216,7 +216,7 @@ class ExerciseScreen extends React.Component {
                     this.setState({
                         currentExercise,
                         isSuccessCurrentExercise: true,
-                        currentExerciseIsFinish: listeMotFrancais.length===0
+                        currentExerciseIsFinish: listeMotFrancais.length === 0
 
                     });
                 } else {
@@ -229,7 +229,7 @@ class ExerciseScreen extends React.Component {
     }
 
     _renderExercise() {
-        if(this.state.isFinishActivity) return this._renderFinishActivity();
+        if (this.state.isFinishActivity) return this._renderFinishActivity();
         if (this.state.currentExercise == null) return null;
         if (this.state.currentExerciseType === "chooseExactTranslation")
             return (
@@ -255,14 +255,14 @@ class ExerciseScreen extends React.Component {
         //traductionPaires
         if (this.state.currentExerciseType === "traductionPaires") {
             return (
-                    <PairsTranslationExercise
-                        currentExercise={this.state.currentExercise}
-                        handleOnPressResponse={this._handleOnPressPairs}
-                        isUserSelectedResponse={this.state.isUserSelectedResponse}
-                        handleOnPressCheckButton={this._handleOnPressCheckButton}
-                        userResponse={this.state.userResponse}
-                        isPairsSuccess={this.state.isSuccessCurrentExercise}
-                    />
+                <PairsTranslationExercise
+                    currentExercise={this.state.currentExercise}
+                    handleOnPressResponse={this._handleOnPressPairs}
+                    isUserSelectedResponse={this.state.isUserSelectedResponse}
+                    handleOnPressCheckButton={this._handleOnPressCheckButton}
+                    userResponse={this.state.userResponse}
+                    isPairsSuccess={this.state.isSuccessCurrentExercise}
+                />
             );
         }
 
@@ -277,34 +277,34 @@ class ExerciseScreen extends React.Component {
     }
 
     _renderCheckOrFinishButton() {
-        if(!this.state.isFinishActivity){
-        if (!this.state.currentExerciseIsFinish)
+        if (!this.state.isFinishActivity) {
+            if (!this.state.currentExerciseIsFinish)
+                return (
+                    <CheckButton onPress={() => this._handleOnPressCheckButton()}
+                                 disabled={this.state.disabledCheckButton}/>
+                );
+            //Button Terminer
             return (
-                <CheckButton onPress={() => this._handleOnPressCheckButton()}
-                             disabled={this.state.disabledCheckButton}/>
+                <Fragment>
+                    {
+                        (this.state.currentExerciseType !== "traductionPaires") ?
+                            <Alert title={this.state.isSuccessCurrentExercise ? "Bonne réponse" : "Mauvaise réponse"}
+                                   type={this.state.isSuccessCurrentExercise ? "success" : "danger"}/> : null
+                    }
+
+                    <FinishButton onPress={() => this._handleOnPressFinishButton()}
+                                  isSuccess={this.state.isSuccessCurrentExercise}/>
+                </Fragment>
+
             );
-        //Button Terminer
-        return (
-            <Fragment>
-                {
-                     (this.state.currentExerciseType !== "traductionPaires")?
-                         <Alert title={this.state.isSuccessCurrentExercise ? "Bonne réponse" : "Mauvaise réponse"}
-                                type={this.state.isSuccessCurrentExercise ? "success" : "danger"}/>: null
-                }
-
-                <FinishButton onPress={() => this._handleOnPressFinishButton()}
-                              isSuccess={this.state.isSuccessCurrentExercise}/>
-            </Fragment>
-
-        );
         }
     }
 
-    _scoringCalcule(){
-        if(this.state.currentExerciseIsFinish && this.state.isSuccessCurrentExercise){
+    _scoringCalcule() {
+        if (this.state.currentExerciseIsFinish && this.state.isSuccessCurrentExercise) {
             this.setState(
                 {
-                    score: this.state.score+1
+                    score: this.state.score + 1
                 }
             )
         }
@@ -315,7 +315,7 @@ class ExerciseScreen extends React.Component {
         this._scoringCalcule();
         let numberExercise = ExoData.length;
         let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
-        if((this.state.currentIndex + 1) >= this.state.numberExercise){
+        if ((this.state.currentIndex + 1) >= this.state.numberExercise) {
             this.setState({
                 progressBarValue,
                 isLoading: false,
@@ -345,7 +345,7 @@ class ExerciseScreen extends React.Component {
         )
     }
 
-    _renderFinishActivity(){
+    _renderFinishActivity() {
         return (
             <View style={styles.finishActivityView}>
                 <Title>Activité terminée</Title>
@@ -355,12 +355,13 @@ class ExerciseScreen extends React.Component {
             </View>
         )
     }
+
     render() {
         return (
             <SafeAreaView style={styles.container}>
                 <View style={{width: '95%', alignSelf: 'center', flexDirection: 'row'}}>
                     <View style={{width: '10%', alignSelf: 'center'}}>
-                        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                        <TouchableOpacity onPress={() => this.onClose()}>
                             <MaterialIcons name="close" size={40} color="red"/>
                         </TouchableOpacity>
                     </View>

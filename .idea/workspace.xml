@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ navigation/TabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/ navigation/TabNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TranslationScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TranslationScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +104,7 @@
       <workItem from="1579028172576" duration="42112000" />
       <workItem from="1579209147390" duration="13881000" />
       <workItem from="1579344524631" duration="2976000" />
-      <workItem from="1579352777973" duration="27162000" />
+      <workItem from="1579352777973" duration="33061000" />
     </task>
     <servers />
   </component>
