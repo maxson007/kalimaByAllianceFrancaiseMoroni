@@ -1,47 +1,76 @@
 import React from "react";
-import {SafeAreaView, StyleSheet, View, Text, Image, TouchableOpacity, FlatList} from "react-native";
+import {SafeAreaView, StyleSheet, View, Text, Image, ActivityIndicator, FlatList} from "react-native";
 import ButtonChoiceTheme from "../components/ButtonChoiceTheme";
+
+import {getThemeFromApi} from "../Api/MuhogoApi";
+
 const data=[
     {
         icon: require("../assets/images/screens/theme/base.png"),
-        text: 'J’apprends les bases'
+        libelle: 'J’apprends les bases'
     },
     {
         icon: require("../assets/images/screens/theme/handshake.png"),
-        text: 'Se saluer et se présenter'
+        libelle: 'Se saluer et se présenter'
     },
     {
         icon: require("../assets/images/screens/theme/road.png"),
-        text: 'Demander son chemin'
+        libelle: 'Demander son chemin'
     },
     {
         icon: require("../assets/images/screens/theme/taxi.png"),
-        text: 'Utiliser les transports'
+        libelle: 'Utiliser les transports'
     },
     {
         icon: require("../assets/images/screens/theme/give.png"),
-        text: 'Déclarer sa flamme'
+        libelle: 'Déclarer sa flamme'
     },
     {
         icon: require("../assets/images/screens/theme/fast-food.png"),
-        text: 'Commander au restaurant'
+        libelle: 'Commander au restaurant'
     },
     {
         icon: require("../assets/images/screens/theme/sports.png"),
-        text: 'Parler de ses loisirs'
+        libelle: 'Parler de ses loisirs'
     }
 ];
 export default class ChooseActivityThemeScreen extends  React.Component{
     constructor(props) {
         super(props);
+        this.state ={ isLoading: true}
+
     }
 
     static navigationOptions = {
         title: 'Activité',
 
     };
-    render(){
 
+    componentDidMount() {
+        getThemeFromApi().then( data => {
+            this.setState({
+                isLoading: false,
+                dataSource: data,
+            });
+        });
+
+    }
+
+    _displayChooseActivityScreen = (idTheme) => {
+        console.log("Display film " + idTheme)
+        this.props.navigation.navigate('ChooseActivity', {idTheme: idTheme})
+    };
+
+    render(){
+        const {dataSource}=this.state;
+
+        if(this.state.isLoading){
+            return(
+                <View style={{flex: 1, padding: 20}}>
+                    <ActivityIndicator/>
+                </View>
+            )
+        }
         return (
             <SafeAreaView style={styles.container}>
                 <View style={styles.choisiThematiqueTextView}>
@@ -52,11 +81,11 @@ export default class ChooseActivityThemeScreen extends  React.Component{
 
                 <FlatList
                     style
-                    data={data}
+                    data={dataSource}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => (
                         <View style={styles.buttonView}>
-                            <ButtonChoiceTheme onPress={ ()=>this.props.navigation.navigate('ChooseActivity')} imageIcon={item.icon} title={item.text} />
+                            <ButtonChoiceTheme onPress={ ()=>this._displayChooseActivityScreen(item.id)} imageIcon={{uri: item.icon}} title={item.libelle} />
                         </View>
                     )}
                 />

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         flex:1,
         width: 38,
         height: 37,
-
+        resizeMode: 'contain',
     },
     title: {
         flex: 3,

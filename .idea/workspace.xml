@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ navigation/TabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/ navigation/TabNavigator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/MuhogoApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/activity/ExerciseScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ButtonChoiceTheme.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ButtonChoiceTheme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ChooseActivityThemeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChooseActivityThemeScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +104,11 @@
       <workItem from="1579028172576" duration="42112000" />
       <workItem from="1579209147390" duration="13881000" />
       <workItem from="1579344524631" duration="2976000" />
-      <workItem from="1579352777973" duration="33061000" />
+      <workItem from="1579352777973" duration="33338000" />
+      <workItem from="1579593533576" duration="7000" />
+      <workItem from="1579593893903" duration="1018000" />
+      <workItem from="1580157407718" duration="743000" />
+      <workItem from="1580502756746" duration="11664000" />
     </task>
     <servers />
   </component>
@@ -112,10 +116,11 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1267" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578924478309">
-      <screen x="-1920" y="23" width="1920" height="1057" />
+    <state x="571" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581513321343">
+      <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state x="-1267" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.23.1920.1057/0.23.1680.947@-1920.23.1920.1057" timestamp="1578924478309" />
+    <state x="571" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.947@0.23.1680.947" timestamp="1581513321343" />
     <state x="515" y="194" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579451288675">
       <screen x="0" y="23" width="1680" height="947" />
     </state>
