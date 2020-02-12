@@ -57,7 +57,6 @@ export default class ChooseActivityThemeScreen extends  React.Component{
     }
 
     _displayChooseActivityScreen = (idTheme) => {
-        console.log("Display film " + idTheme)
         this.props.navigation.navigate('ChooseActivity', {idTheme: idTheme})
     };
 

@@ -17,14 +17,15 @@ import Alert from "../../components/Alert";
 import ChooseExactTranslationExercise from "../../components/ChooseExactTranslationExercise";
 import TranslateSentenceExercise from "../../components/TranslateSentenceExercice";
 import PairsTranslationExercise from "../../components/PairsTranslationExercise";
+import {getExerciseByIdActivity} from "../../Api/MuhogoApi";
 
-const ExoData = [
+const ExoDataLocal = [
 
 
     {
         identifier: 3,
-        typeExercice: 'translatesSentence',
-        enonceExercice: 'Traduis cette phrase. ',
+        exerciseType: 'translatesSentence',
+        enonce: 'Traduis cette phrase. ',
         phraseTraduire: 'Je suis un garcon',
         listeProposition: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
         reponseExercice: 'Wami mtru baba'
@@ -32,8 +33,8 @@ const ExoData = [
 
     {
         identifier: 1,
-        typeExercice: 'chooseExactTranslation',
-        enonceExercice: 'Choisis la traduction exacte',
+        exerciseType: 'chooseExactTranslation',
+        enonce: 'Choisis la traduction exacte',
         phraseTraduire: 'Je suis une fille',
         listeProposition: ['Wami mtru mama', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
         reponseExercice: 'Wami mtru mama'
@@ -41,14 +42,14 @@ const ExoData = [
     {
         identifier: 2,
         typeExercice: 'chooseExactTranslation',
-        enonceExercice: 'Choisis la traduction exacte',
+        enonce: 'Choisis la traduction exacte',
         phraseTraduire: 'Je suis un garcon',
         listeProposition: ['Wami mtru baba', 'Wami mtru baba', 'Wami mama', 'Wami baba'],
         reponseExercice: 'Wami mtru baba'
     }, {
         identifier: 4,
-        typeExercice: 'traductionPaires',
-        enonceExercice: 'Tape sur les paires',
+        exerciseType: 'traductionPaires',
+        enonce: 'Tape sur les paires',
         listeMotComorien: ['Wami', 'mtru', 'mama', 'baba', 'coco', 'bahari', 'gari'],
         listeMotFrancais: ['Moi', 'personne', 'maman', 'papa', 'grand-mere', 'mer', 'voiture']
     }
@@ -60,12 +61,12 @@ class ExerciseScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentExercise: null,
-            currentExerciseType: null,
+            //currentExercise: null,
+            //currentExerciseType: null,
             progressBarValue: 0,
             currentIndex: 0,
             numberExercise: 0,
-            isLoading: false,
+            isLoading: true,
             disabledCheckButton: true,
             isSuccessCurrentExercise: null,
             currentExerciseIsFinish: false,
@@ -85,18 +86,24 @@ class ExerciseScreen extends React.Component {
     };
 
     componentDidMount() {
-        this.setState({isLoading: true});
-        let currentExercise = ExoData[this.state.currentIndex];
-        let currentExerciseType = currentExercise.typeExercice;
-        let numberExercise = ExoData.length;
-        let progressBarValue = 0;// (this.state.currentIndex + 1) / numberExercise;
-        this.setState({
-            currentExercise,
-            numberExercise,
-            progressBarValue,
-            currentExerciseType,
-            isLoading: false
+        const idActivity=this.props.navigation.state.params.idActivity;
+        getExerciseByIdActivity(idActivity).then( data => {
+            //this.setState({isLoading: true});
+            let currentExercise = data[this.state.currentIndex];
+            console.log(currentExercise);
+            let currentExerciseType = currentExercise.exerciseType;
+            let numberExercise = data.length;
+            let progressBarValue = 0.1;// (this.state.currentIndex + 1) / numberExercise;
+            this.setState({
+                ExoData: data,
+                currentExercise,
+                numberExercise,
+                progressBarValue,
+                currentExerciseType,
+                isLoading: false
+            });
         });
+
     }
 
     onClose() {
@@ -230,8 +237,9 @@ class ExerciseScreen extends React.Component {
 
     _renderExercise() {
         if (this.state.isFinishActivity) return this._renderFinishActivity();
-        if (this.state.currentExercise == null) return null;
-        if (this.state.currentExerciseType === "chooseExactTranslation")
+       // console.log(this.state.currentExercise);
+        if (this.state.currentExercise == null) this._displayLoading();
+        if (this.state.currentExerciseType === "chooseExactTranslation"){
             return (
                 <ChooseExactTranslationExercise
                     currentExercise={this.state.currentExercise}
@@ -240,6 +248,7 @@ class ExerciseScreen extends React.Component {
                     handleOnPressCheckButton={this._handleOnPressCheckButton}
                 />
             );
+        }
         if (this.state.currentExerciseType === "translatesSentence") {
             return (
                 <TranslateSentenceExercise
@@ -313,7 +322,7 @@ class ExerciseScreen extends React.Component {
     _handleOnPressFinishButton() {
         this.setState({isLoading: true});
         this._scoringCalcule();
-        let numberExercise = ExoData.length;
+        let numberExercise = this.state.ExoData.length;
         let progressBarValue = (this.state.currentIndex + 1) / numberExercise;
         if ((this.state.currentIndex + 1) >= this.state.numberExercise) {
             this.setState({
@@ -324,9 +333,9 @@ class ExerciseScreen extends React.Component {
             //this.props.navigation.navigate('ExerciseResult', {progressBarValue: progressBarValue, score:this.state.score})
             return;
         }
-        let currentExercise = ExoData[this.state.currentIndex + 1];
+        let currentExercise = this.state.ExoData[this.state.currentIndex + 1];
         //console.log(currentExercise);
-        let currentExerciseType = currentExercise.typeExercice;
+        let currentExerciseType = currentExercise.exerciseType;
 
         this.setState(
             {

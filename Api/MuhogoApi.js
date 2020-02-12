@@ -18,3 +18,23 @@ export function getThemeFromApi(page=1){
         .then((response) => response.json())
         .catch((error) => console.error(error))
 }
+
+export function getActivityByIdTheme(idTheme){
+    const url = `${API_PROD_URL}/activites?theme=${idTheme}`;
+    return fetch(url,{
+        headers: {
+            Accept: 'application/json'}
+    })
+        .then((response) => response.json())
+        .catch((error) => console.error(error))
+}
+
+export function getExerciseByIdActivity(idActivity){
+    const url = `${API_PROD_URL}/exercises?activite=${idActivity}`;
+    return fetch(url,{
+        headers: {
+            Accept: 'application/json'}
+    })
+        .then((response) => response.json())
+        .catch((error) => console.error(error))
+}

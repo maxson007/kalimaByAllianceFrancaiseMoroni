@@ -50,7 +50,7 @@ class TranslateSentenceExercise extends React.Component {
         if (this.props.currentExercise != null)
             return (
                 <Fragment>
-                    <Text style={styles.textInstructionExercice}>{this.props.currentExercise.enonceExercice}</Text>
+                    <Text style={styles.textInstructionExercice}>{this.props.currentExercise.enonce}</Text>
                     <Text style={styles.textAtraduire}>
                         {this.props.currentExercise.phraseTraduire}
                     </Text>
