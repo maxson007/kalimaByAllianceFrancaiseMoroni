@@ -4,24 +4,26 @@ import ButtonPrimary from '../components/ButtonPrimary';
 import SplashAnimation from '../animations/SplashAnimation';
 import {connect} from "react-redux";
 import TabNavigator from "../ navigation/TabNavigator";
-import { enableScreens} from 'react-native-screens';
+import {enableScreens} from 'react-native-screens';
 import ChoiceLanguageScreen from "./survey/ChoiceLanguageScreen";
 import ChooseDialectScreen from "./survey/ChooseDialectScreen";
 import WhyLearningScreen from "./survey/WhyLearningScreen";
+import {ADD_SURVEY_RESPONSE} from "../constants/ActionTypes";
+
 enableScreens();
+
 class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             startSurvey: false,
-            isCompletedSurvey: false,
             surveyResponse: {
                 languageToLearn: null,
                 dialectToLearn: null,
                 whyLearnLanguage: null
             }
         };
-        this._addSurveyResponse=this._addSurveyResponse.bind(this)
+        this._addSurveyResponse = this._addSurveyResponse.bind(this)
     }
 
     static navigationOptions = {
@@ -29,74 +31,94 @@ class HomeScreen extends React.Component {
     };
 
     _addSurveyResponse(surveyResponse) {
-        this.setState({surveyResponse});
-        if(this.state.surveyResponse.languageToLearn!==null &&
-            this.state.surveyResponse.dialectToLearn!==null &&
-            this.state.surveyResponse.whyLearnLanguage!==null){
-            this.setState({
-                startSurvey: false,
-                isCompletedSurvey: true,
-            })
+            this.setState({...surveyResponse}, ()=>{
+                if (this.state.surveyResponse.languageToLearn !== null &&
+                    this.state.surveyResponse.dialectToLearn !== null &&
+                    this.state.surveyResponse.whyLearnLanguage !== null) {
+                    this.setState({startSurvey: false});
+
+                    const action = { type: ADD_SURVEY_RESPONSE, value: surveyResponse };
+                    this.props.dispatch(action);
+                }
+            });
         }
+
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
-    _renderHomeView(){
-            return (
-                <SafeAreaView style={styles.container}>
-                    <View style={styles.textViewApprendsGratuitement}>
-                        <Text style={styles.apprendsGratuitement}>
-                            Apprends gratuitement
-                            les langues comoriennes et le français.
-                        </Text>
-                    </View>
-                    <View style={styles.kLimaView}>
-                        <Image style={{width: 100, height: 100, alignSelf: 'center'}}
-                               source={require('../assets/logos/languageLogo.png')}/>
-                        <Text style={styles.kLima}>
-                            k@lima
-                        </Text>
-                    </View>
-                    <View style={styles.buttonView}>
-                        <ButtonPrimary onPress={() => {this.setState({startSurvey: true})}}
-                                       style={styles.button}
-                                       title="Commencer"/>
-                        <ButtonPrimary style={styles.button} title="J’ai déjà un compte"/>
-                    </View>
-                    <View style={styles.imageLogoView}>
-                        <Image style={{width: 200, resizeMode: 'contain'}}
-                               source={require('../assets/logos/logoalliance.png')}/>
-                    </View>
-                </SafeAreaView>
-            );
+    _onPressStartSurvey = () => {
+        this.setState({startSurvey: true})
+    };
+
+    _renderHomeView() {
+        return (
+            <SafeAreaView style={styles.container}>
+                <View style={styles.textViewApprendsGratuitement}>
+                    <Text style={styles.apprendsGratuitement}>
+                        Apprends gratuitement
+                        les langues comoriennes.
+                    </Text>
+                </View>
+                <View style={styles.kLimaView}>
+                    <Image style={{width: 100, height: 100, alignSelf: 'center'}}
+                           source={require('../assets/logos/languageLogo.png')}/>
+                    <Text style={styles.kLima}>
+                        k@lima
+                    </Text>
+                </View>
+                <View style={styles.buttonView}>
+                    <ButtonPrimary onPress={this._onPressStartSurvey}
+                                   style={styles.button}
+                                   title="Commencer"/>
+                    <ButtonPrimary style={styles.button} title="J’ai déjà un compte"/>
+                </View>
+                <View style={styles.imageLogoView}>
+                    <Image style={{width: 200, resizeMode: 'contain'}}
+                           source={require('../assets/logos/logoalliance.png')}/>
+                </View>
+            </SafeAreaView>
+        );
     }
+
     render() {
-        if (this.props.surveyResponse.languageToLearn === null) {
+
+        if (!this.props.surveyResponse.languageToLearn && !this.state.startSurvey) {
             return this._renderHomeView()
         }
-        if(this.state.startSurvey){
-            if(this.state.surveyResponse.languageToLearn!==null && this.state.surveyResponse.dialectToLearn===null) {
+        if (this.state.startSurvey) {
+            if (
+                this.state.surveyResponse.languageToLearn === null &&
+                this.state.surveyResponse.dialectToLearn === null &&
+                this.state.surveyResponse.whyLearnLanguage === null) {
                 return (
-                    <ChooseDialectScreen addSurveyResponse={this._addSurveyResponse} surveyResponse={this.state.surveyResponse}/>
+                    <ChoiceLanguageScreen addSurveyResponse={this._addSurveyResponse}
+                                          surveyResponse={this.state.surveyResponse}/>
                 )
-            }
-            if(this.state.surveyResponse.languageToLearn!==null &&
-                this.state.surveyResponse.dialectToLearn!==null &&
-                this.state.surveyResponse.whyLearnLanguage===null) {
+
+            } else if (
+                this.state.surveyResponse.languageToLearn !== null &&
+                this.state.surveyResponse.dialectToLearn === null &&
+                this.state.surveyResponse.whyLearnLanguage === null) {
                 return (
-                    <WhyLearningScreen addSurveyResponse={this._addSurveyResponse} surveyResponse={this.state.surveyResponse}/>
+                    <ChooseDialectScreen addSurveyResponse={this._addSurveyResponse}
+                                         surveyResponse={this.state.surveyResponse}/>
                 )
-            }
-            if(this.state.surveyResponse.languageToLearn===null &&
-                this.state.surveyResponse.dialectToLearn===null &&
-                this.state.surveyResponse.whyLearnLanguage===null){
+            } else if (
+                this.state.surveyResponse.languageToLearn !== null &&
+                this.state.surveyResponse.dialectToLearn !== null &&
+                this.state.surveyResponse.whyLearnLanguage === null) {
                 return (
-                    <ChoiceLanguageScreen addSurveyResponse={this._addSurveyResponse} surveyResponse={this.state.surveyResponse} />
+                    <WhyLearningScreen addSurveyResponse={this._addSurveyResponse}
+                                       surveyResponse={this.state.surveyResponse}/>
                 )
             }
         }
-
         return <TabNavigator/>
+
     }
+
+
 }
 
 const styles = StyleSheet.create({

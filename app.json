@@ -19,7 +19,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "fr.wanidev.muhogo",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "fr.wanidev.muhogo",
+      "versionCode": 1
     }
   }
 }

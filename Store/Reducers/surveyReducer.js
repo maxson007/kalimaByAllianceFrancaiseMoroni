@@ -2,9 +2,11 @@ import {ADD_SURVEY_RESPONSE} from '../../constants/ActionTypes'
 
 
 const initialState ={
+    surveyResponse: {
         languageToLearn: null,
         dialectToLearn: null,
         whyLearnLanguage: null
+    }
     };
 
 

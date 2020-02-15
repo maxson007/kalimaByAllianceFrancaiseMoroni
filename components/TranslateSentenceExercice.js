@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     viewInstructionExercice: {
         width: '80%',
         alignSelf: 'center',
-        marginTop: 50
+        marginTop: 20
     },
     textInstructionExercice: {
         color: '#da002e',

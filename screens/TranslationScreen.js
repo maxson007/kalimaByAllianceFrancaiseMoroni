@@ -1,11 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, Image, View, SafeAreaView, TextInput, TouchableOpacity, Picker, Platform} from 'react-native';
+import {StyleSheet, Text, Image, View, SafeAreaView, TextInput, FlatList, ActivityIndicator, Platform} from 'react-native';
+import {translateWordFrenchInComorian} from "../Api/swadriiApi";
+import { Searchbar ,List} from 'react-native-paper';
 
 export default class TranslationScreen extends React.Component {
     constructor(props) {
         super(props);
+        this.searchedWord = "";
+
         this.state = {
-            sourceLanguage: null
+            shikomoriWords: []
         }
     }
 
@@ -13,38 +17,69 @@ export default class TranslationScreen extends React.Component {
         title: 'Traduction'
     };
 
+    _loadTranslate() {
+        if (this.searchedWord.length > 0) {
+            this.setState({ isLoading: true })
+            translateWordFrenchInComorian(this.searchedWord).then(data => {
+                this.setState({
+                    shikomoriWords: data.swadrii.word.ShikomoriWord,
+                    isLoading: false
+                })
+            })
+        }
+    }
+
+    _searchTextInputChanged(word) {
+        this.searchedWord = word;
+    }
+    _displayLoading() {
+        if (this.state.isLoading) {
+            return (
+                <View style={styles.loading_container}>
+                    <ActivityIndicator size='large' />
+                </View>
+            )
+        }
+    }
     render() {
+
         return (
             <SafeAreaView style={styles.container}>
                 <View style={{width: '100%', marginTop: Platform.OS === 'ios' ? 20 : 40}}>
                     <Text style={{color: '#da002e', fontSize: 20, fontWeight: '700', marginLeft: 41}}>
-                        Français
+                        Mot Français
                     </Text>
+
                     <View style={styles.textInputView}>
-                        <TextInput
+                        <Searchbar
                             style={styles.textInput}
-                            placeholder="Entrez du text"
-                            multiline={true}
-                            numberOfLines={4}
-                        >
-                        </TextInput>
+                            placeholder="Entrez un mot"
+                            onChangeText={(text) => this._searchTextInputChanged(text)}
+                            onSubmitEditing={() => this._loadTranslate()}
+                        />
                     </View>
                 </View>
 
                 <View style={{width: '100%', marginTop:40}}>
                     <Text style={{color: '#8C8D8F', fontSize: 20, fontWeight: '700', marginLeft: 41}}>
-                        Comoriens
+                        Mots Comoriens
                     </Text>
-                    <View style={styles.textInputView}>
-                        <TextInput
-                            style={styles.textInputResult}
-                            multiline={true}
-                            editable={false}
-                        >
-                        </TextInput>
+                    <View style={{marginLeft: 30}}>
+                        <List.Section>
+                            <List.Subheader >Résultat</List.Subheader>
+                        <FlatList
+                            data={this.state.shikomoriWords}
+                            renderItem={({ item }) =>  <List.Item
+                                title={item.word}
+                                description={item.category}
+                            />}
+                            keyExtractor={item => item.id.toString()}
+                        />
+                        </List.Section>
+                        {this._displayLoading()}
                     </View>
                 </View>
-                <View style={{alignItems: 'center', marginTop: 40}}>
+{/*                <View style={{alignItems: 'center', marginTop: 40}}>
                     <TouchableOpacity style={styles.button}>
                         <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={styles.buttonText}> Traduire </Text>
@@ -61,7 +96,7 @@ export default class TranslationScreen extends React.Component {
                                    source={require('../assets/images/screens/translate/audio-speaker-on.png')}/>
                         </View>
                     </TouchableOpacity>
-                </View>
+                </View>*/}
             </SafeAreaView>
         );
     };
@@ -71,7 +106,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     textInputView: {
-        alignItems: 'center',
+        alignSelf: 'center',
     },
     button: {
         margin: 5,
@@ -103,7 +138,7 @@ const styles = StyleSheet.create({
         color: '#da002e'
     },
     textInput: {
-        height: 140,
+        height: 40,
         width: '80%',
         borderColor: '#da002e',
         borderStyle: 'solid',

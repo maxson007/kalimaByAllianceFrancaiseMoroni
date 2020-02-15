@@ -1,27 +1,21 @@
 import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image,FlatList,TouchableOpacity} from 'react-native';
-import {connect} from "react-redux";
-import {ADD_SURVEY_RESPONSE} from '../../constants/ActionTypes'
-import TabNavigator from "../../ navigation/TabNavigator";
 
 class WhyLearningScreen extends React.Component{
 
     constructor(props) {
         super(props);
-       // this._addSurveyResponse = this._addSurveyResponse.bind(this)
-
+        this._addSurveyResponse = this._addSurveyResponse.bind(this)
     }
     static navigationOptions = {
         headerShown: false,
     };
 
-    _addSurveyResponse(whyLearnLanguage) {
+    _addSurveyResponse(whyLearnLanguage){
         const surveyResponse = this.props.surveyResponse;
         surveyResponse.whyLearnLanguage=whyLearnLanguage;
         this.props.addSurveyResponse(surveyResponse);
-        //this.setState({surveyResponse, isCompleted:true});
-        //const action = { type: ADD_SURVEY_RESPONSE, value: surveyResponse };
-        //this.props.dispatch(action);
+
     }
     render() {
 
@@ -120,9 +114,4 @@ const styles = StyleSheet.create({
     },
 });
 
-const mapStateToProps = (state) => {
-    return {
-        surveyResponse: state.surveyResponse
-    }
-};
-export default connect(mapStateToProps)(WhyLearningScreen)
+export default WhyLearningScreen
