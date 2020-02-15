@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1f8183d-03f2-46cf-98d6-a737352f7475" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Api/swadriiApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Reducers/surveyReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Reducers/surveyReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ChooseExactTranslationExercise.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ChooseExactTranslationExercise.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/PairsTranslationExercise.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/PairsTranslationExercise.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TranslateSentenceExercice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/TranslationScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TranslationScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/survey/WhyLearningScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/survey/WhyLearningScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +108,7 @@
       <workItem from="1579593533576" duration="7000" />
       <workItem from="1579593893903" duration="1018000" />
       <workItem from="1580157407718" duration="743000" />
-      <workItem from="1580502756746" duration="40063000" />
+      <workItem from="1580502756746" duration="40602000" />
     </task>
     <servers />
   </component>

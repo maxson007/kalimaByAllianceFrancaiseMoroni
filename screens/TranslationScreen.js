@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, Image, View, SafeAreaView, TextInput, FlatList, ActivityIndicator, Platform} from 'react-native';
 import {translateWordFrenchInComorian} from "../Api/swadriiApi";
 import { Searchbar ,List} from 'react-native-paper';
+import * as Speech from 'expo-speech';
 
 export default class TranslationScreen extends React.Component {
     constructor(props) {
@@ -12,7 +13,9 @@ export default class TranslationScreen extends React.Component {
             shikomoriWords: []
         }
     }
-
+    listen(word) {
+        Speech.speak(word);
+    }
     static navigationOptions = {
         title: 'Traduction'
     };
@@ -71,6 +74,7 @@ export default class TranslationScreen extends React.Component {
                             data={this.state.shikomoriWords}
                             renderItem={({ item }) =>  <List.Item
                                 title={item.word}
+                                onPress={()=>this.listen(item.word)}
                                 description={item.category}
                             />}
                             keyExtractor={item => item.id.toString()}
