@@ -55,7 +55,7 @@ class ChooseActivityScreen extends React.Component {
 
         return (
             <SafeAreaView style={styles.container}>
-                <FlatList style={{ marginTop: Platform.OS === 'ios' ? 10 : 40}}
+                <FlatList
                     data={dataActivity}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({item}) => (

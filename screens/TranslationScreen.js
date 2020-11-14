@@ -14,7 +14,11 @@ export default class TranslationScreen extends React.Component {
         }
     }
     listen(word) {
-        Speech.speak(word);
+        const options={language: "zdj"};
+      // word= word.replace(/ɓ/g,"bb");
+       //word= word.replace(/ɗ/g,"dd");
+       word= word.replace("(u-)","");
+        Speech.speak(word,options);
     }
     static navigationOptions = {
         title: 'Traduction'
@@ -49,7 +53,7 @@ export default class TranslationScreen extends React.Component {
         return (
             <SafeAreaView style={styles.container}>
                 <View style={{width: '100%', marginTop: Platform.OS === 'ios' ? 20 : 40}}>
-                    <Text style={{color: '#da002e', fontSize: 20, fontWeight: '700', marginLeft: 41}}>
+                    <Text style={{color: '#da002e', fontSize: 20, fontWeight: '700', marginLeft: 22, marginBottom: 2}}>
                         Mot Français
                     </Text>
 
@@ -64,10 +68,10 @@ export default class TranslationScreen extends React.Component {
                 </View>
 
                 <View style={{width: '100%', marginTop:40}}>
-                    <Text style={{color: '#8C8D8F', fontSize: 20, fontWeight: '700', marginLeft: 41}}>
+                    <Text style={{color: '#8C8D8F', fontSize: 20, fontWeight: '700', marginLeft: 22}}>
                         Mots Comoriens
                     </Text>
-                    <View style={{marginLeft: 30}}>
+                    <View style={{marginLeft:20}}>
                         <List.Section>
                             <List.Subheader >Résultat</List.Subheader>
                         <FlatList
@@ -143,7 +147,7 @@ const styles = StyleSheet.create({
     },
     textInput: {
         height: 40,
-        width: '80%',
+        width: '90%',
         borderColor: '#da002e',
         borderStyle: 'solid',
         borderWidth: 1,

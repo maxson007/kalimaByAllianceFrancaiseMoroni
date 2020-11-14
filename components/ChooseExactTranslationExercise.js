@@ -27,7 +27,6 @@ class ChooseExactTranslationExercise extends React.Component {
 
     _renderResponseProposition() {
         if (this.props.currentExercise == null) return null;
-console.log(this.props.currentExercise.listeProposition);
         return (
             <FlatList
                 data={this.props.currentExercise.listeProposition}
